@@ -13,7 +13,6 @@ import uo.ri.util.assertion.ArgumentChecks;
 public class ListNotInvoicedWorkOrdersByNif implements Command<List<InvoicingWorkOrderDto>> {
 	
 	private String nif;
-	private List<InvoicingWorkOrderDto> notInvoicedWorkOrders = new ArrayList<InvoicingWorkOrderDto>();
     private InvoiceWorkOrderGateway ig = Factories.persistence.forInvoice();
 
 	public ListNotInvoicedWorkOrdersByNif(String nif) {
@@ -23,7 +22,10 @@ public class ListNotInvoicedWorkOrdersByNif implements Command<List<InvoicingWor
 	
 	public List<InvoicingWorkOrderDto> execute() {
 
-        return ig.findNotInvoicedByClientNif(nif).stream().map(InvoiceRecordAssembler::toDto).toList();
+        return ig.findNotInvoicedByClientNif(nif)
+                .stream()
+                .map(InvoiceRecordAssembler::toDto)
+                .toList();
 
 	}
 

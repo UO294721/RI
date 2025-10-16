@@ -26,68 +26,77 @@ import uo.ri.util.exception.BusinessException;
 import uo.ri.util.math.Rounds;
 
 public class AddInvoice implements Command<InvoiceDto> {
-	
-	private final List<String> workOrderIds;
-	private final InvoiceDto dto = new InvoiceDto();
+
+    private final List<String> workOrderIds;
+    private final InvoiceDto dto = new InvoiceDto();
     private final InvoiceWorkOrderGateway ig = Factories.persistence.forInvoice();
     private final WorkOrderGateway wg = Factories.persistence.forWorkOrder();
-	
-	public AddInvoice(List<String> workOrderIds) {
-		ArgumentChecks.isNotNull(workOrderIds);
-		ArgumentChecks.isTrue(workOrderIds.size() > 0);
-		for(String s : workOrderIds) {
-			ArgumentChecks.isNotNull(s);
-			ArgumentChecks.isNotBlank(s);
-			ArgumentChecks.isNotEmpty(s);
-		}
-		dto.id = UUID.randomUUID().toString();
-		dto.state = "NOT_YET_PAID";
-		dto.version = 1L;
-		this.workOrderIds = workOrderIds;
-	}
-	
-	public InvoiceDto execute() throws BusinessException {
 
-        InvoiceDto idto = new InvoiceDto();
+    public AddInvoice(List<String> workOrderIds) {
+        ArgumentChecks.isNotNull(workOrderIds);
+        ArgumentChecks.isTrue(workOrderIds.size() > 0);
+        for(String s : workOrderIds) {
+            ArgumentChecks.isNotNull(s);
+            ArgumentChecks.isNotBlank(s);
+            ArgumentChecks.isNotEmpty(s);
+        }
+        // Initialize DTO fields
+        dto.id = UUID.randomUUID().toString();
+        dto.state = "NOT_YET_PAID";
+        dto.version = 1L;
+        this.workOrderIds = workOrderIds;
+    }
 
+    public InvoiceDto execute() throws BusinessException {
         try {
-            InvoiceRecord ir = InvoiceRecordAssembler.toRecord(dto);
-            List<WorkOrderRecord> wr = new ArrayList<>();
-            double amount = 0;
-            for(String id : workOrderIds){
+            // 1. Validate all work orders exist and are FINISHED
+            List<WorkOrderRecord> workOrders = new ArrayList<>();
+            double totalAmount = 0.0;
+
+            for(String id : workOrderIds) {
                 Optional<WorkOrderRecord> wo = wg.findById(id);
                 BusinessChecks.exists(wo, "The WorkOrder does not exist");
-                WorkOrderRecord r = wo.get();
-                amount += r.amount;
-                wr.add(r);
+
+                WorkOrderRecord record = wo.get();
+                // Validate state (already done in gateway, but good practice)
+                totalAmount += record.amount;
+                workOrders.add(record);
             }
 
-            ir.date = LocalDate.now();
-            // included
-            double vat = vatPercentage(ir.date);
-            ir.vat = ir.amount * ( vat / 100); // vat amount
-            double total = ir.amount * ir.vat; // vat included
-            ir.amount = Rounds.toCents(total);
+            // 2. Calculate invoice totals
+            dto.date = LocalDate.now();
+            double vatRate = vatPercentage(dto.date);
 
+            // Amount WITHOUT VAT
+            double amountWithoutVat = totalAmount;
+            // VAT amount
+            dto.vat = Rounds.toCents(amountWithoutVat * (vatRate / 100.0));
+            // Total amount WITH VAT
+            dto.amount = Rounds.toCents(amountWithoutVat + dto.vat);
+
+            // 3. Convert DTO to Record and persist
+            InvoiceRecord ir = InvoiceRecordAssembler.toRecord(dto);
             ig.add(ir);
 
-            for(WorkOrderRecord r : wr){
-                r.invoiceId = ir.id;
+            // Update DTO with generated number
+            dto.number = ir.number;
+
+            // 4. Update all work orders with invoice reference
+            for(WorkOrderRecord r : workOrders) {
+                r.invoiceId = dto.id;
+                r.state = "INVOICED";
                 r.updatedAt = LocalDateTime.now();
                 wg.update(r);
             }
 
+            return dto;
+
         } catch (PersistenceException e) {
             throw new BusinessException(e);
         }
-
-        return idto;
-		
-	}
+    }
 
     private double vatPercentage(LocalDate d) {
         return LocalDate.parse("2012-07-01").isBefore(d) ? 21.0 : 18.0;
-
     }
-
 }
