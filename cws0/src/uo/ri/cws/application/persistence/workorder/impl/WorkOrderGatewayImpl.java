@@ -23,7 +23,6 @@ public class WorkOrderGatewayImpl implements WorkOrderGateway {
 
     @Override
     public void update(WorkOrderRecord workOrderRecord) throws PersistenceException {
-
         try{
             Connection c = Jdbc.getCurrentConnection();
 
@@ -39,12 +38,10 @@ public class WorkOrderGatewayImpl implements WorkOrderGateway {
         } catch (SQLException e) {
             throw new PersistenceException(e);
         }
-
     }
 
     @Override
     public Optional<WorkOrderRecord> findById(String id) throws PersistenceException {
-
         Optional<WorkOrderRecord> wo = Optional.empty();
 
         try{
@@ -68,11 +65,27 @@ public class WorkOrderGatewayImpl implements WorkOrderGateway {
         } catch(SQLException e){
             throw new PersistenceException(e);
         }
-
     }
 
     @Override
     public List<WorkOrderRecord> findAll() throws PersistenceException {
         return List.of();
+    }
+
+    @Override
+    public boolean hasActiveWorkOrders(String mechanicId) throws PersistenceException {
+        try {
+            Connection c = Jdbc.getCurrentConnection();
+
+            try(PreparedStatement pst = c.prepareStatement(
+                    Queries.getSQLSentence("ACTIVE_WORKORDERS_SELECT"))){
+                pst.setString(1, mechanicId);
+                try(ResultSet rs = pst.executeQuery()){
+                    return rs.next(); // Returns true if at least one active workorder exists
+                }
+            }
+        } catch (SQLException e) {
+            throw new PersistenceException(e);
+        }
     }
 }

@@ -1,6 +1,7 @@
 package uo.ri.cws.application.persistence.workorder;
 
 import uo.ri.cws.application.persistence.Gateway;
+import uo.ri.cws.application.persistence.PersistenceException;
 
 import java.time.LocalDateTime;
 
@@ -24,5 +25,7 @@ public interface WorkOrderGateway extends Gateway<WorkOrderGateway.WorkOrderReco
         public LocalDateTime updatedAt;
         public String entityState;
     }
+
+    boolean hasActiveWorkOrders(String mechanicId) throws PersistenceException;
 
 }

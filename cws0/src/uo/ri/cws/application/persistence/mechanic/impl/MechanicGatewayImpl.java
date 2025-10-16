@@ -41,51 +41,13 @@ public class MechanicGatewayImpl implements MechanicGateway{
         }
 	}
 
-	@Override
-	public void remove(String id) throws PersistenceException {
-        // Process
+    @Override
+    public void remove(String id) throws PersistenceException {
         try {
-
             Connection c = Jdbc.getCurrentConnection();
 
-            try(PreparedStatement pst =
-                        c.prepareStatement(Queries.getSQLSentence(
-                                "ACTIVE_WORKORDERS_SELECT"))){
-                pst.setString(1, id);
-                try(ResultSet rs = pst.executeQuery()){
-                    if(rs.next())
-                        throw new PersistenceException("The mechanic has an active workorder");
-                }
-            }
-
-            try(PreparedStatement pst = c.prepareStatement(Queries.getSQLSentence("INTERVENTIONS_IN_WORKORDERS"))){
-                pst.setString(1, id);
-                try(ResultSet rs = pst.executeQuery()){
-                    if(rs.next())
-                        throw new PersistenceException("There are interventions associated " +
-                                "to the mechanic");
-                }
-            }
-
-            try(PreparedStatement pst =
-                        c.prepareStatement(Queries.getSQLSentence("IN_FORCE_CONTRACT"))){
-                pst.setString(1, id);
-                try(ResultSet rs = pst.executeQuery()){
-                    if(rs.next())
-                        throw new PersistenceException("There is a contract in force");
-                }
-            }
-
-            try(PreparedStatement pst = c.prepareStatement(Queries.getSQLSentence("TERMINATED_CONTRACT"))){
-                pst.setString(1, id);
-                try(ResultSet rs = pst.executeQuery()){
-                    if(rs.next())
-                        throw new PersistenceException("The contract is terminated");
-                }
-            }
-
-            try (PreparedStatement pst = c
-                    .prepareStatement(Queries.getSQLSentence("TMECHANICS_DELETE"))) {
+            try (PreparedStatement pst = c.prepareStatement(
+                    Queries.getSQLSentence("TMECHANICS_DELETE"))) {
                 pst.setString(1, id);
                 pst.executeUpdate();
             }
@@ -93,7 +55,7 @@ public class MechanicGatewayImpl implements MechanicGateway{
         } catch (SQLException e) {
             throw new PersistenceException(e);
         }
-	}
+    }
 
 	@Override
 	public void update(MechanicRecord t) throws PersistenceException {
