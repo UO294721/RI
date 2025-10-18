@@ -8,9 +8,16 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Gateway for Contract persistence operations.
+ * Follows the Table Data Gateway pattern.
+ */
 public interface ContractGateway extends Gateway<ContractGateway.ContractRecord> {
 	
-	public class ContractRecord {
+	/**
+	 * Record representing a Contract in the database
+	 */
+	class ContractRecord {
 		public String id;
 		public long version;
 		
@@ -31,24 +38,46 @@ public interface ContractGateway extends Gateway<ContractGateway.ContractRecord>
 	}
 	
 	/**
-	 * Finds the active contract for a mechanic
+	 * Finds the active (in force) contract for a mechanic
+	 * @param mechanicId the mechanic's ID
+	 * @return Optional containing the contract if found
+	 * @throws PersistenceException on database errors
 	 */
-	Optional<ContractRecord> findInforceByMechanicId(String mechanicId) throws PersistenceException;
+	Optional<ContractRecord> findInforceByMechanicId(String mechanicId)
+			throws PersistenceException;
 	
 	/**
-	 * Finds all contracts for a mechanic
+	 * Finds all contracts (any state) for a mechanic
+	 * @param mechanicId the mechanic's ID
+	 * @return List of contracts, may be empty
+	 * @throws PersistenceException on database errors
 	 */
-	List<ContractRecord> findByMechanicId(String mechanicId) throws PersistenceException;
+	List<ContractRecord> findByMechanicId(String mechanicId)
+			throws PersistenceException;
 	
 	/**
-	 * Finds all contracts in force
+	 * Finds all contracts that are currently in force
+	 * @return List of in-force contracts, may be empty
+	 * @throws PersistenceException on database errors
 	 */
-	List<ContractRecord> findInforceContracts() throws PersistenceException;
-	
-	Optional<ContractRecord> findByType(String name) throws PersistenceException;
+	List<ContractRecord> findInforceContracts()
+			throws PersistenceException;
 	
 	/**
-	 * Counts payrolls for a contract
+	 * Finds contracts by contract type ID
+	 * @param contractTypeId the contract type ID
+	 * @return Optional containing the first contract if found
+	 * @throws PersistenceException on database errors
 	 */
-	int countPayrollsByContractId(String contractId) throws PersistenceException;
+	Optional<ContractRecord> findByContractTypeId(String contractTypeId)
+			throws PersistenceException;
+	
+	/**
+	 * Counts the number of payrolls associated with a contract
+	 * @param contractId the contract ID
+	 * @return number of payrolls
+	 * @throws PersistenceException on database errors
+	 */
+	int countPayrollsByContractId(String contractId)
+			throws PersistenceException;
 }

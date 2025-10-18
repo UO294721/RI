@@ -25,7 +25,7 @@ public class UpdateContract implements Command<Void> {
 	private void validateDto(ContractDto dto) {
 		ArgumentChecks.isNotNull(dto, "Contract dto cannot be null");
 		ArgumentChecks.isNotBlank(dto.id, "Contract id cannot be blank");
-		ArgumentChecks.isTrue(dto.annualBaseSalary >= 0,
+		ArgumentChecks.isTrue(dto.annualBaseSalary > 0,
 				"Annual salary cannot be negative");
 		
 		if (dto.endDate != null) {
@@ -45,15 +45,12 @@ public class UpdateContract implements Command<Void> {
 			// Check contract is in force
 			BusinessChecks.isTrue("IN_FORCE".equals(cr.state),
 					"Contract is not in force");
+			BusinessChecks.hasVersion(dto.version, cr.version);
 			
 			// Update fields
-			if (dto.endDate != null) {
-				BusinessChecks.isTrue(dto.endDate.isAfter(cr.startDate),
-						"End date must be after start date");
-				cr.endDate = dto.endDate;
-			} else {
-				cr.endDate = null;
-			}
+			BusinessChecks.isTrue(dto.endDate.isAfter(cr.startDate),
+					"End date must be after start date");
+			cr.endDate = dto.endDate;
 			
 			cr.annualBaseSalary = dto.annualBaseSalary;
 			

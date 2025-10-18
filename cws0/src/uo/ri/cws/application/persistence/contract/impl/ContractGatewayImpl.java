@@ -7,10 +7,15 @@ import uo.ri.util.jdbc.Jdbc;
 import uo.ri.util.jdbc.Queries;
 
 import java.sql.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Implementation of ContractGateway using JDBC.
+ * Follows the Table Data Gateway pattern.
+ */
 public class ContractGatewayImpl implements ContractGateway {
 	
 	@Override
@@ -20,29 +25,32 @@ public class ContractGatewayImpl implements ContractGateway {
 			
 			try (PreparedStatement pst = c.prepareStatement(
 					Queries.getSQLSentence("TCONTRACTS_ADD"))) {
+				
 				pst.setString(1, t.id);
 				pst.setString(2, t.mechanicId);
 				pst.setString(3, t.contractTypeId);
 				pst.setString(4, t.professionalGroupId);
 				pst.setDate(5, Date.valueOf(t.startDate));
+				
 				if (t.endDate != null) {
 					pst.setDate(6, Date.valueOf(t.endDate));
 				} else {
 					pst.setNull(6, Types.DATE);
 				}
+				
 				pst.setDouble(7, t.annualBaseSalary);
 				pst.setDouble(8, t.taxRate);
 				pst.setDouble(9, t.settlement);
 				pst.setString(10, t.state);
 				pst.setLong(11, t.version);
-				pst.setTimestamp(12, new Timestamp(System.currentTimeMillis()));
-				pst.setTimestamp(13, new Timestamp(System.currentTimeMillis()));
-				pst.setString(14, "ENABLED");
+				pst.setTimestamp(12, Timestamp.valueOf(t.createdAt));
+				pst.setTimestamp(13, Timestamp.valueOf(t.updatedAt));
+				pst.setString(14, t.entityState);
 				
 				pst.executeUpdate();
 			}
 		} catch (SQLException e) {
-			throw new PersistenceException(e);
+			throw new PersistenceException("Error adding contract", e);
 		}
 	}
 	
@@ -57,7 +65,7 @@ public class ContractGatewayImpl implements ContractGateway {
 				pst.executeUpdate();
 			}
 		} catch (SQLException e) {
-			throw new PersistenceException(e);
+			throw new PersistenceException("Error removing contract", e);
 		}
 	}
 	
@@ -68,28 +76,28 @@ public class ContractGatewayImpl implements ContractGateway {
 			
 			try (PreparedStatement pst = c.prepareStatement(
 					Queries.getSQLSentence("TCONTRACTS_UPDATE"))) {
+				
 				if (t.endDate != null) {
 					pst.setDate(1, Date.valueOf(t.endDate));
 				} else {
 					pst.setNull(1, Types.DATE);
 				}
+				
 				pst.setDouble(2, t.annualBaseSalary);
 				pst.setDouble(3, t.settlement);
 				pst.setString(4, t.state);
-				pst.setTimestamp(5, new Timestamp(System.currentTimeMillis()));
+				pst.setTimestamp(5, Timestamp.valueOf(LocalDateTime.now()));
 				pst.setString(6, t.id);
 				
 				pst.executeUpdate();
 			}
 		} catch (SQLException e) {
-			throw new PersistenceException(e);
+			throw new PersistenceException("Error updating contract", e);
 		}
 	}
 	
 	@Override
 	public Optional<ContractRecord> findById(String id) throws PersistenceException {
-		Optional<ContractRecord> result = Optional.empty();
-		
 		try {
 			Connection c = Jdbc.getCurrentConnection();
 			
@@ -99,15 +107,15 @@ public class ContractGatewayImpl implements ContractGateway {
 				
 				try (ResultSet rs = pst.executeQuery()) {
 					if (rs.next()) {
-						result = Optional.of(ContractRecordAssembler.toRecord(rs));
+						return Optional.of(ContractRecordAssembler.toRecord(rs));
 					}
 				}
 			}
 		} catch (SQLException e) {
-			throw new PersistenceException(e);
+			throw new PersistenceException("Error finding contract by id", e);
 		}
 		
-		return result;
+		return Optional.empty();
 	}
 	
 	@Override
@@ -127,7 +135,7 @@ public class ContractGatewayImpl implements ContractGateway {
 				}
 			}
 		} catch (SQLException e) {
-			throw new PersistenceException(e);
+			throw new PersistenceException("Error finding all contracts", e);
 		}
 		
 		return contracts;
@@ -136,8 +144,6 @@ public class ContractGatewayImpl implements ContractGateway {
 	@Override
 	public Optional<ContractRecord> findInforceByMechanicId(String mechanicId)
 			throws PersistenceException {
-		Optional<ContractRecord> result = Optional.empty();
-		
 		try {
 			Connection c = Jdbc.getCurrentConnection();
 			
@@ -147,15 +153,15 @@ public class ContractGatewayImpl implements ContractGateway {
 				
 				try (ResultSet rs = pst.executeQuery()) {
 					if (rs.next()) {
-						result = Optional.of(ContractRecordAssembler.toRecord(rs));
+						return Optional.of(ContractRecordAssembler.toRecord(rs));
 					}
 				}
 			}
 		} catch (SQLException e) {
-			throw new PersistenceException(e);
+			throw new PersistenceException("Error finding in-force contract by mechanic", e);
 		}
 		
-		return result;
+		return Optional.empty();
 	}
 	
 	@Override
@@ -177,7 +183,7 @@ public class ContractGatewayImpl implements ContractGateway {
 				}
 			}
 		} catch (SQLException e) {
-			throw new PersistenceException(e);
+			throw new PersistenceException("Error finding contracts by mechanic", e);
 		}
 		
 		return contracts;
@@ -200,34 +206,33 @@ public class ContractGatewayImpl implements ContractGateway {
 				}
 			}
 		} catch (SQLException e) {
-			throw new PersistenceException(e);
+			throw new PersistenceException("Error finding in-force contracts", e);
 		}
 		
 		return contracts;
 	}
 	
 	@Override
-	public Optional<ContractRecord> findByType(String name) throws PersistenceException {
-		Optional<ContractRecord> result = Optional.empty();
-		
+	public Optional<ContractRecord> findByContractTypeId(String contractTypeId)
+			throws PersistenceException {
 		try {
 			Connection c = Jdbc.getCurrentConnection();
 			
 			try (PreparedStatement pst = c.prepareStatement(
 					Queries.getSQLSentence("TCONTRACTS_FINDBYTYPE"))) {
-				pst.setString(1, name);
+				pst.setString(1, contractTypeId);
 				
 				try (ResultSet rs = pst.executeQuery()) {
 					if (rs.next()) {
-						result = Optional.of(ContractRecordAssembler.toRecord(rs));
+						return Optional.of(ContractRecordAssembler.toRecord(rs));
 					}
 				}
 			}
 		} catch (SQLException e) {
-			throw new PersistenceException(e);
+			throw new PersistenceException("Error finding contract by type", e);
 		}
 		
-		return result;
+		return Optional.empty();
 	}
 	
 	@Override
@@ -237,7 +242,7 @@ public class ContractGatewayImpl implements ContractGateway {
 			Connection c = Jdbc.getCurrentConnection();
 			
 			try (PreparedStatement pst = c.prepareStatement(
-					Queries.getSQLSentence("TPAYROLLS_COUNT_BY_CONTRACT"))) {
+					"SELECT COUNT(*) FROM TPayrolls WHERE contract_id = ?")) {
 				pst.setString(1, contractId);
 				
 				try (ResultSet rs = pst.executeQuery()) {
@@ -247,7 +252,7 @@ public class ContractGatewayImpl implements ContractGateway {
 				}
 			}
 		} catch (SQLException e) {
-			throw new PersistenceException(e);
+			throw new PersistenceException("Error counting payrolls", e);
 		}
 		
 		return 0;
