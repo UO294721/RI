@@ -84,7 +84,7 @@ public interface ContractCrudService {
 	void terminate(String contractId) throws BusinessException;
 
 	/**
-	 * @param contract id, 
+	 * @param id contract id,
 	 * @return the contract with the given id, if it exists
 	 * @throws BusinessException DOES NOT
 	 * @throws IllegalArgumentException when id is null or empty.
@@ -92,7 +92,7 @@ public interface ContractCrudService {
 	Optional<ContractDto> findById(String id) throws BusinessException;
 	
 	/**
-	 * @param mechanic id 
+	 * @param nif mechanic id
 	 * @return a list with every Contract registered for a mechanic, probably empty
 	 * @throws BusinessException DOES NOT
 	 * @throws IllegalArgumentException when id is null or empty. 
@@ -112,7 +112,7 @@ public interface ContractCrudService {
 	 */
 	List<ContractSummaryDto> findAll( ) throws BusinessException;
 	
-	public class ContractDto {
+	class ContractDto {
 
 		public String id;
 		public long version;
@@ -131,14 +131,14 @@ public interface ContractCrudService {
 		public String state;
 	}
 	
-	public class ContractTypeOfContractDto {
+	class ContractTypeOfContractDto {
 		public String id;
 
 		public String name;
 		public double compensationDaysPerYear;	
 	}
 	
-	public class MechanicOfContractDto {
+	class MechanicOfContractDto {
 		public String id;
 
 		// Filled in reading operations
@@ -147,7 +147,7 @@ public interface ContractCrudService {
 		public String surname;
 	}
 	
-	public class ProfessionalGroupOfContractDto {
+	class ProfessionalGroupOfContractDto {
 		public String id;
 		
 		// Filled in reading operations
@@ -156,7 +156,7 @@ public interface ContractCrudService {
 		public double productivityRate;	
 	}
 	
-	public class ContractSummaryDto {
+	class ContractSummaryDto {
 		public String id;
 		
 		public String nif;

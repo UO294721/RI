@@ -17,7 +17,7 @@ import uo.ri.util.exception.BusinessException;
  * Scenario: [P.Da.1] There is no payroll at all
  */
 public class ScenarioPDa1 {
-    private PayrollService service = Factories.service.forPayrollService();
+    private final PayrollService service = Factories.service.forPayrollService();
 	private int numOfDeleted;
 
     @When("[P.Da.1] I delete previous month payrolls")

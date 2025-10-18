@@ -29,7 +29,7 @@ public class BusinessChecks {
 
 	public static void isFalse(boolean condition, String errorMsg)
 			throws BusinessException {
-		isTrue( condition == false, errorMsg);
+		isTrue(!condition, errorMsg);
 	}
 
 	public static void exists(Optional<?> owo) throws BusinessException {
@@ -84,7 +84,7 @@ public class BusinessChecks {
 	}
 
 	public static void isTrue(boolean condition, String msg) throws BusinessException {
-		if (condition == false) {
+		if (!condition) {
 			throw new BusinessException(msg);
 		}
 	}

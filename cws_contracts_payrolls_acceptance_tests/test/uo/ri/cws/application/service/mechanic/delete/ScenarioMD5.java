@@ -8,8 +8,8 @@ import uo.ri.cws.application.service.mechanic.MechanicCrudService;
 import uo.ri.cws.application.service.util.ExceptionBox;
 
 public class ScenarioMD5 {
-	private ExceptionBox ctx = new ExceptionBox();
-	private MechanicCrudService service = Factories.service
+	private final ExceptionBox ctx = new ExceptionBox();
+	private final MechanicCrudService service = Factories.service
 			.forMechanicCrudService();
 
 	@When("[M.D.5] I try to remove a mechanic with null argument")

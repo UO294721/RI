@@ -9,7 +9,7 @@ import java.io.PrintStream;
  * @author alb
  */
 public class DefaultPrinter {
-	private static PrintStream con = System.out;
+	private static final PrintStream con = System.out;
 
 	public static void printHeading(String string) {
 		con.println(string);

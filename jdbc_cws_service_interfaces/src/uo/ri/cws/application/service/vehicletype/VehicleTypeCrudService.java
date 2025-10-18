@@ -8,7 +8,7 @@ public interface VehicleTypeCrudService {
 
 	// ...
 
-	public static class VehicleTypeDto {
+	class VehicleTypeDto {
 		public String id;
 		public long version;
 

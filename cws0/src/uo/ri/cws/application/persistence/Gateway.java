@@ -12,25 +12,25 @@ public interface Gateway<T> {
 	
 	/**
 	 * Adds a new item to the table 
-	 * @param new item 
+	 * @param t new item
 	 */
 	void add(T t) throws PersistenceException;
 	
 	/**
 	 * Removes an object from the table
-	 * @param key to delete
+	 * @param id key to delete
 	 */
 	void remove(String id) throws PersistenceException;
 	
 	/**
 	 * Updates a row
-	 * @param new data to overwrite old one
+	 * @param t new data to overwrite old one
 	 */
 	void update(T t) throws PersistenceException;
 	
 	/**
 	 * Finds a row in the table
-	 * @param record's primary key to retrieve
+	 * @param id record's primary key to retrieve
 	 * @return dto from that record, probably null
 	 */
 	Optional<T> findById(String id) throws PersistenceException;

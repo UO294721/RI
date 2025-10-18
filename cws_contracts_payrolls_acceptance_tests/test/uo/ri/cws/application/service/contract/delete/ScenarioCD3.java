@@ -13,8 +13,8 @@ import uo.ri.cws.application.service.util.dbfixture.records.TContractsRecord;
  * Scenario: [C.D.3] Try to delete a contract for a mechanic with interventions during the contract
  */
 public class ScenarioCD3 {
-    private ExceptionBox ctx = new ExceptionBox();
-    private ContractCrudService service = Factories.service.forContractCrudService();
+    private final ExceptionBox ctx = new ExceptionBox();
+    private final ContractCrudService service = Factories.service.forContractCrudService();
 	private TContractsRecord contract;
 
     @Given("[C.D.3] a contract for a mechanic with interventions during the contract")

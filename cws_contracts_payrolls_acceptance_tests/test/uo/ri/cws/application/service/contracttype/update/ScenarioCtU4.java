@@ -13,8 +13,8 @@ import uo.ri.cws.application.service.util.dtobuilders.ContractTypeDtoBuilder;
  * Scenario: [Ct.U.4] Try to update a contract type with negative days
  */
 public class ScenarioCtU4 {
-	private ExceptionBox ctx = new ExceptionBox();
-	private ContractTypeCrudService service = Factories.service.forContractTypeCrudService();
+	private final ExceptionBox ctx = new ExceptionBox();
+	private final ContractTypeCrudService service = Factories.service.forContractTypeCrudService();
 
 	@When("[Ct.U.4] I try to update a contract type with negative days")
 	public void whenITryToUpdateAContractTypeWithNegativeDays() {

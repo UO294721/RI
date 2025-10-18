@@ -15,8 +15,8 @@ import uo.ri.cws.application.service.util.dtobuilders.ProfessionalGroupDtoBuilde
  * Scenario: [Pg.A.2] Try to add a repeated professional group
  */
 public class ScenarioPgA2 {
-    private ExceptionBox ctx = new ExceptionBox();
-    private ProfessionalGroupCrudService service = Factories.service.forProfessionalGroupCrudService();
+    private final ExceptionBox ctx = new ExceptionBox();
+    private final ProfessionalGroupCrudService service = Factories.service.forProfessionalGroupCrudService();
     private String professionalGroupName;
 
     @Given("[Pg.A.2] a professional group")

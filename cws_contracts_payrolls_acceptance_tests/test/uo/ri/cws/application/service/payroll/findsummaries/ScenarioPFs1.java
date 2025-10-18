@@ -16,7 +16,7 @@ import uo.ri.util.exception.BusinessException;
  * Scenario: [P.Fs.1] Find payrolls when there is none
  */
 public class ScenarioPFs1 {
-	private PayrollService service = Factories.service.forPayrollService();
+	private final PayrollService service = Factories.service.forPayrollService();
 	private List<PayrollSummaryDto> result;
 
 	@When("[P.Fs.1] I search for all payrolls")

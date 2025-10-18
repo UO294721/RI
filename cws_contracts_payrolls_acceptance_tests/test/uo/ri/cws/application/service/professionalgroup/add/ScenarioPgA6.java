@@ -12,8 +12,8 @@ import uo.ri.cws.application.service.util.dtobuilders.ProfessionalGroupDtoBuilde
  * Scenario: [Pg.A.6] Try to add a professional group with empty name
  */
 public class ScenarioPgA6 {
-    private ExceptionBox ctx = new ExceptionBox();
-    private ProfessionalGroupCrudService service = Factories.service.forProfessionalGroupCrudService();
+    private final ExceptionBox ctx = new ExceptionBox();
+    private final ProfessionalGroupCrudService service = Factories.service.forProfessionalGroupCrudService();
 
     @When("[Pg.A.6] I try to add a professional group with name {string}")
     public void whenITryToAddAProfessionalGroupWithString(String name) {

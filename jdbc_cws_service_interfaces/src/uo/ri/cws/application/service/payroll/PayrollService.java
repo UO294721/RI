@@ -20,7 +20,8 @@ public interface PayrollService {
     /**
      * Generates all payrolls at last day of the previous month of the one 
      * passed as argument
-     * @param arg Payroll will be generated considering this as present day
+     * @param present arg Payroll will be generated considering this as present
+     *                 day
      * @return a list of payrolls generated
      *
      * @throws {@link BusinessException}
@@ -30,7 +31,7 @@ public interface PayrollService {
     /**
      * Deletes the payroll generated last month for the mechanic passed as argument
      *
-     * @param mechanic identifier
+     * @param mechanicId mechanic identifier
      * @throws {@link BusinessException} if there are no mechanic with that id
      */
     void deleteLastGeneratedOfMechanicId(String mechanicId) throws BusinessException;
@@ -80,7 +81,7 @@ public interface PayrollService {
     List<PayrollSummaryDto> findSummarizedByProfessionalGroupName(String name) 
     		throws BusinessException;
 
-    public class PayrollDto {
+    class PayrollDto {
 
     	public String id;
     	public long version;
@@ -104,7 +105,7 @@ public interface PayrollService {
 		public double totalDeductions;
     }
 
-    public class PayrollSummaryDto {
+    class PayrollSummaryDto {
 
     	public String id;
     	

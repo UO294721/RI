@@ -10,8 +10,8 @@ import uo.ri.cws.application.service.util.ExceptionBox;
  * Scenario: [Pg.U.6] Try to update a professional group with null arg
  */
 public class ScenarioPgU6 {
-    private ExceptionBox ctx = new ExceptionBox();
-    private ProfessionalGroupCrudService service = Factories.service.forProfessionalGroupCrudService();
+    private final ExceptionBox ctx = new ExceptionBox();
+    private final ProfessionalGroupCrudService service = Factories.service.forProfessionalGroupCrudService();
 
     @When("[Pg.U.6] I try to update a professional group with null arg")
     public void whenITryToUpdateAProfessionalGroupWithNullArg() {

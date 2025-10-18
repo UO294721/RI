@@ -11,8 +11,8 @@ import uo.ri.cws.application.service.util.ExceptionBox;
  * Scenario Outline: [P.D.6] Try to delete last payroll with invalid mechanic dni
  */
 public class ScenarioPD6 {
-    private PayrollService service = Factories.service.forPayrollService();
-    private ExceptionBox ctx = new ExceptionBox();
+    private final PayrollService service = Factories.service.forPayrollService();
+    private final ExceptionBox ctx = new ExceptionBox();
 
     @When("[P.D.6] I try to delete with wrong mechanic {string} argument")
     public void whenITryToDeleteWithWrongMechanicArgument(String id) {

@@ -17,8 +17,8 @@ import uo.ri.cws.application.service.util.dtobuilders.ContractDtoBuilder;
  * Scenario Outline: [C.A.12] Try to add a contract with wrong nif
  */
 public class ScenarioCA12 {
-    private ExceptionBox ctx = new ExceptionBox();
-    private ContractCrudService service = Factories.service.forContractCrudService();
+    private final ExceptionBox ctx = new ExceptionBox();
+    private final ContractCrudService service = Factories.service.forContractCrudService();
 
     @When("[C.A.12] I try to add a contract with wrong nif {string}")
     public void whenITryToAddAContractWithWrongNif(String nif) {

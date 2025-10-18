@@ -24,7 +24,7 @@ import uo.ri.util.exception.BusinessException;
  * Scenario: [C.F.2] Find all contracts when there are some
  */
 public class ScenarioCF2 {
-	private ContractCrudService service = Factories.service.forContractCrudService();
+	private final ContractCrudService service = Factories.service.forContractCrudService();
 	private List<TContractsRecord> contracts;
 	private List<ContractSummaryDto> result;
 

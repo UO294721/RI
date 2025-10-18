@@ -15,7 +15,7 @@ import uo.ri.util.exception.BusinessException;
  * Scenario: [Ct.F.1] Find a non existent contract type
  */
 public class ScenarioCtF1 {
-    private ContractTypeCrudService service = Factories.service.forContractTypeCrudService();
+    private final ContractTypeCrudService service = Factories.service.forContractTypeCrudService();
     private Optional<ContractTypeDto> result;
 
     @When("[Ct.F.1] I search a non existent contract type")

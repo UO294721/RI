@@ -25,7 +25,7 @@ import uo.ri.util.exception.BusinessException;
  * Scenario: [C.A.2] Hire an existing mechanic with a previous contract in force shorter than a year
  */
 public class ScenarioCA2 {
-    private ContractCrudService service = Factories.service.forContractCrudService();
+    private final ContractCrudService service = Factories.service.forContractCrudService();
     private TMechanicsRecord mechanic;
     private ContractDto newContract;
 	private TContractTypesRecord contractType;

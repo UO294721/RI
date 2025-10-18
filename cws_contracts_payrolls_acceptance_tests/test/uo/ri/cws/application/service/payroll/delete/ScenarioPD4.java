@@ -24,7 +24,7 @@ import uo.ri.util.exception.BusinessException;
  * 		payrolls including previous month
  */
 public class ScenarioPD4 {
-    private PayrollService service = Factories.service.forPayrollService();
+    private final PayrollService service = Factories.service.forPayrollService();
     private TMechanicsRecord mechanic;
     private TContractsRecord contract;
 	private TPayrollsRecord previousMonthPayroll;

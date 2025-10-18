@@ -15,8 +15,8 @@ import uo.ri.cws.application.service.util.dbfixture.records.TMechanicsRecord;
  * Scenario: [C.T.3] Try to terminate a terminated contract
  */
 public class ScenarioCT3 {
-    private ContractCrudService service = Factories.service.forContractCrudService();
-    private ExceptionBox ctx = new ExceptionBox();
+    private final ContractCrudService service = Factories.service.forContractCrudService();
+    private final ExceptionBox ctx = new ExceptionBox();
     private TContractsRecord contract;
 
     @Given("[C.T.3] a terminated contract")

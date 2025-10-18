@@ -21,9 +21,9 @@ import uo.ri.util.exception.BusinessException;
  * Scenario: [P.G.5] Generating payrolls twice in the month has no effect
  */
 public class ScenarioPG5 {
-    private PayrollService service = Factories.service.forPayrollService();
+    private final PayrollService service = Factories.service.forPayrollService();
     private int initialPayrollCount;
-    private LocalDate today = LocalDate.now();
+    private final LocalDate today = LocalDate.now();
 	private List<PayrollDto> generated;
 
     @Given("[P.G.5] several already generated payrolls for this month")

@@ -5,7 +5,7 @@ public class Random {
 	private Random() {}
 
 	public static int inRange(int min, int max) {
-		return (int) inRange((double) min, (double) max);
+		return (int) inRange(min, (double) max);
 	}
 
 	public static long inRange(long min, long max) {

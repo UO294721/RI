@@ -11,8 +11,8 @@ import uo.ri.cws.application.service.util.ExceptionBox;
  * contract type with invalid argument
  */
 public class ScenarioCtD4 {
-	private ExceptionBox ctx = new ExceptionBox();
-	private ContractTypeCrudService service = Factories.service
+	private final ExceptionBox ctx = new ExceptionBox();
+	private final ContractTypeCrudService service = Factories.service
 			.forContractTypeCrudService();
 
 	@When("[Ct.D.4] I try to del a contract type with name {string}")

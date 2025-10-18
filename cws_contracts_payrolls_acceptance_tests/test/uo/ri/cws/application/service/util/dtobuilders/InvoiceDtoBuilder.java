@@ -8,7 +8,7 @@ import uo.ri.util.random.Random;
 
 public class InvoiceDtoBuilder {
 
-	private InvoiceDto dto = createDefaultInvoiceRecord();
+	private final InvoiceDto dto = createDefaultInvoiceRecord();
 
 	public InvoiceDto build() {
 		return dto;

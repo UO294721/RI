@@ -15,7 +15,7 @@ import uo.ri.util.exception.BusinessException;
  * Scenario: [W.FnI.5] Try to find workorders with wrong parameters
  */
 public class ScenarioWFnI5 {
-	private InvoicingService service = Factories.service.forCreateInvoiceService();
+	private final InvoicingService service = Factories.service.forCreateInvoiceService();
 
 	private List<InvoicingWorkOrderDto> found;
 

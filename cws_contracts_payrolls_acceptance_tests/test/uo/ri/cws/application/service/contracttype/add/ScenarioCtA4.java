@@ -9,8 +9,8 @@ import uo.ri.cws.application.service.util.ExceptionBox;
 import uo.ri.cws.application.service.util.dtobuilders.ContractTypeDtoBuilder;
 
 public class ScenarioCtA4 {
-    private ExceptionBox ctx = new ExceptionBox();
-    private ContractTypeCrudService service = Factories.service.forContractTypeCrudService();
+    private final ExceptionBox ctx = new ExceptionBox();
+    private final ContractTypeCrudService service = Factories.service.forContractTypeCrudService();
 
     @When("[Ct.A.4] I try to add a contract type with null name")
     public void whenITryToAddAContractTypeWithNullName() {

@@ -19,7 +19,7 @@ import uo.ri.util.exception.BusinessException;
  * Scenario: [C.F.9] Find contracts by mechanic id for an existent mechanic with no contracts
  */
 public class ScenarioCF9 {
-	private ContractCrudService service = Factories.service.forContractCrudService();
+	private final ContractCrudService service = Factories.service.forContractCrudService();
 	private TMechanicsRecord mechanic;
 	private List<ContractSummaryDto> result;
 

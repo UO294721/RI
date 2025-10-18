@@ -11,8 +11,8 @@ import uo.ri.cws.application.service.util.dbfixture.DbFixtures;
 import uo.ri.cws.application.service.util.dbfixture.records.TMechanicsRecord;
 
 public class ScenarioMD4 {
-	private ExceptionBox ctx = new ExceptionBox();
-	private MechanicCrudService service = Factories.service
+	private final ExceptionBox ctx = new ExceptionBox();
+	private final MechanicCrudService service = Factories.service
 			.forMechanicCrudService();
 	private String mechanicId;
 

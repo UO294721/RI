@@ -19,7 +19,7 @@ import uo.ri.util.exception.BusinessException;
  * Scenario: [Ct.F.2] Find an existent contract type
  */
 public class ScenarioCtF2 {
-    private ContractTypeCrudService service = Factories.service.forContractTypeCrudService();
+    private final ContractTypeCrudService service = Factories.service.forContractTypeCrudService();
     private TContractTypesRecord contractType;
     private Optional<ContractTypeDto> result;
 

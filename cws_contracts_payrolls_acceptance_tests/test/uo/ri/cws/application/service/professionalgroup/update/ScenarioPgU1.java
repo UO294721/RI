@@ -19,7 +19,7 @@ import uo.ri.util.exception.BusinessException;
  * Scenario: [Pg.U.1] Update a professional group
  */
 public class ScenarioPgU1 {
-    private ProfessionalGroupCrudService service = Factories.service.forProfessionalGroupCrudService();
+    private final ProfessionalGroupCrudService service = Factories.service.forProfessionalGroupCrudService();
     private TProfessionalGroupsRecord loaded;
 	private TProfessionalGroupsRecord original;
 

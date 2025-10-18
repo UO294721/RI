@@ -7,8 +7,8 @@ import uo.ri.cws.application.service.mechanic.MechanicCrudService;
 import uo.ri.cws.application.service.util.ExceptionBox;
 
 public class ScenarioMFbI3 {
-    private MechanicCrudService service = Factories.service.forMechanicCrudService();
-    private ExceptionBox ctx = new ExceptionBox();
+    private final MechanicCrudService service = Factories.service.forMechanicCrudService();
+    private final ExceptionBox ctx = new ExceptionBox();
 
     @When("[M.FbI.3] I try to find a mechanic with null argument")
     public void whenITryToFindMechanicWithNullArgument() {

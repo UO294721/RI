@@ -9,8 +9,8 @@ import uo.ri.cws.application.service.util.ExceptionBox;
 import uo.ri.cws.application.service.util.dtobuilders.MechanicDtoBuilder;
 
 public class ScenarioMA4 {
-    private ExceptionBox ctx = new ExceptionBox();
-    private MechanicCrudService service = Factories.service.forMechanicCrudService();
+    private final ExceptionBox ctx = new ExceptionBox();
+    private final MechanicCrudService service = Factories.service.forMechanicCrudService();
 
     @When("[M.A.4] I try to add a new mechanic with null nif")
     public void whenITryToAddANewMechanicWithNullNif() {

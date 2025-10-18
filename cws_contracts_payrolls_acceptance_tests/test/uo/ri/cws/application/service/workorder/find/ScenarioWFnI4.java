@@ -15,7 +15,7 @@ import uo.ri.util.exception.BusinessException;
  * Scenario: [W.FnI.4] Try to find workorders for a non existent client
  */
 public class ScenarioWFnI4 {
-	private InvoicingService service = Factories.service.forCreateInvoiceService();
+	private final InvoicingService service = Factories.service.forCreateInvoiceService();
 
 	private List<InvoicingWorkOrderDto> found;
 

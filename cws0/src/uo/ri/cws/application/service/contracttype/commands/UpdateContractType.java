@@ -36,7 +36,7 @@ public class UpdateContractType implements Command<Void> {
 
             // Update only compensation days
             ContractTypeRecord toUpdate = record.get();
-            toUpdate.compensationDaysPerYear = dto.compensationDays;
+            toUpdate.compensationDays = dto.compensationDays;
             toUpdate.updatedAt = LocalDateTime.now();
 
             gateway.update(toUpdate);

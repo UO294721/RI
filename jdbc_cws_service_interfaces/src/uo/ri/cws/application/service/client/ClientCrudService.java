@@ -8,7 +8,7 @@ public interface ClientCrudService {
 
 	// ...
 
-	public static class ClientDto {
+	class ClientDto {
         public String id;
         public long version;
         

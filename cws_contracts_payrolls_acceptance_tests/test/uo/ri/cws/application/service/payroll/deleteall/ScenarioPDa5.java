@@ -20,7 +20,7 @@ import uo.ri.util.exception.BusinessException;
  * Scenario: [P.Da.5] Deleting payrolls twice in a row
  */
 public class ScenarioPDa5 {
-    private PayrollService service = Factories.service.forPayrollService();
+    private final PayrollService service = Factories.service.forPayrollService();
     private int payrollCountAfterFirstDeletion;
 	private int numOfDeletions;
 

@@ -7,8 +7,8 @@ import uo.ri.cws.application.service.contracttype.ContractTypeCrudService;
 import uo.ri.cws.application.service.util.ExceptionBox;
 
 public class ScenarioCtA3 {
-	private ExceptionBox ctx = new ExceptionBox();
-	private ContractTypeCrudService service = Factories.service.forContractTypeCrudService();
+	private final ExceptionBox ctx = new ExceptionBox();
+	private final ContractTypeCrudService service = Factories.service.forContractTypeCrudService();
 
 	@When("[Ct.A.3] I try to add a contract type with null argument")
 	public void whenITryToAddAContractTypeWithNullArgument() {

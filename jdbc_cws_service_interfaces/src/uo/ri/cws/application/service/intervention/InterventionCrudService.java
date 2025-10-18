@@ -11,7 +11,7 @@ public interface InterventionCrudService {
 	// ...
 
 	
-	public static class InterventionDto {
+	class InterventionDto {
 		public String id;
 		public long version;
 

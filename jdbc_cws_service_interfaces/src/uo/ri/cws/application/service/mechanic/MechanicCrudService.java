@@ -14,7 +14,7 @@ public interface MechanicCrudService {
 	/**
 	 * Add a new mechanic to the system with the data specified in the dto.
 	 * 		The id value will be ignored
-	 * @param mecanico dto
+	 * @param dto mecanico dto
 	 * @return the fully filled dto with the id and version assigned
 	 * @throws BusinessException if there already exist another
 	 * 		mechanic with the same nif
@@ -27,7 +27,7 @@ public interface MechanicCrudService {
 	/**
 	 * Removes the mechanic from the system if the mechanic exists and has no
 	 *     work orders assigned or interventions
-	 * @param idMechanic
+	 * @param mechanicId idMechanic
 	 * @throws BusinessException if:
 	 * 		- the mechanic does not exist
 	 *      - the mechanic has workorders assigned
@@ -40,7 +40,8 @@ public interface MechanicCrudService {
 	/**
 	 * Updates values for the mechanic specified by the id field,
 	 * 		just name and surname will be updated
-	 * @param mechanic dto, the id field, name and surname cannot be null nor blank
+	 * @param dto mechanic dto, the id field, name and surname cannot be null nor
+	 *                   blank
 	 * @throws BusinessException if the mechanic does not exist
 	 * @throws IllegalArgumentException if 
 	 * 		- the dto is null
@@ -73,7 +74,7 @@ public interface MechanicCrudService {
 	 */
 	List<MechanicDto> findAll() throws BusinessException;
 
-	public static class MechanicDto {
+	class MechanicDto {
 		public String id;
 		public long version;
 

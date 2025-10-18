@@ -20,7 +20,7 @@ import uo.ri.util.exception.BusinessException;
  * Scenario: [Ct.A.1] Add a new contract type
  */
 public class ScenarioCtA1 {
-	private ContractTypeCrudService service = Factories.service.forContractTypeCrudService();
+	private final ContractTypeCrudService service = Factories.service.forContractTypeCrudService();
 	private ContractTypeDto newContractType;
 	private ContractTypeDto registered;
 

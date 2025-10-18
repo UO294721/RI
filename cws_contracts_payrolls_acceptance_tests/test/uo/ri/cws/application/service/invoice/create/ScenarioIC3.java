@@ -15,8 +15,8 @@ import uo.ri.cws.application.service.util.dbfixture.records.TWorkOrdersRecord;
  * Scenario: [I.C.3] Trying to create one invoice there is one non existing workorder
  */
 public class ScenarioIC3 {
-    private InvoicingService service = Factories.service.forCreateInvoiceService();
-    private ExceptionBox ctx = new ExceptionBox();
+    private final InvoicingService service = Factories.service.forCreateInvoiceService();
+    private final ExceptionBox ctx = new ExceptionBox();
     private List<TWorkOrdersRecord> workOrders;
 
     @Given("[I.C.3] a client registered with a vehicle and a list of several finished workorders")

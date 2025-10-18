@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface InvoiceWorkOrderGateway extends Gateway<InvoiceRecord> {
 
-    public class InvoiceRecord{
+    class InvoiceRecord{
         public String id;		// the surrogate id (UUID)
         public long version;
 
@@ -25,7 +25,7 @@ public interface InvoiceWorkOrderGateway extends Gateway<InvoiceRecord> {
         public String entityState;
     }
 
-    public class InvoicingWorkOrderRecord {
+    class InvoicingWorkOrderRecord {
         public String id;
         public String description;
         public LocalDateTime date;
@@ -33,6 +33,6 @@ public interface InvoiceWorkOrderGateway extends Gateway<InvoiceRecord> {
         public double amount;
     }
 
-    public List<InvoicingWorkOrderRecord> findNotInvoicedByClientNif(String nif);
+    List<InvoicingWorkOrderRecord> findNotInvoicedByClientNif(String nif);
 
 }

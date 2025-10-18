@@ -16,7 +16,7 @@ public class GenericDao<T> {
 	
 	private final Class<T> type;
     private final String tableName;
-    private Field[] fields;
+    private final Field[] fields;
 
     public GenericDao(Class<T> type) {
         this.type = type;
@@ -72,7 +72,7 @@ public class GenericDao<T> {
 	        try (PreparedStatement ps = conn.prepareStatement(sql)) {
 	            ps.setObject(1, value);
 	            try (ResultSet rs = ps.executeQuery()) {
-	                if (rs.next() == false) {
+	                if (!rs.next()) {
 						return null;
 					}
 	                
@@ -89,7 +89,7 @@ public class GenericDao<T> {
         execute(conn -> {
 	        try (PreparedStatement ps = conn.prepareStatement(sql)) {
 	            try (ResultSet rs = ps.executeQuery()) {
-	                while (rs.next() == true) {
+	                while (rs.next()) {
 	                	T object = mapToObject(rs);
 						res.add( object);
 					}
@@ -109,7 +109,7 @@ public class GenericDao<T> {
 	        try (PreparedStatement ps = conn.prepareStatement(sql)) {
 	            ps.setObject(1, value);
 	            try (ResultSet rs = ps.executeQuery()) {
-	                while (rs.next() == true) {
+	                while (rs.next()) {
 	                	T object = mapToObject(rs);
 						res.add( object);
 					}
@@ -125,7 +125,7 @@ public class GenericDao<T> {
 			throws SQLException, IllegalAccessException {
 		int i = 0;
 		for (Field f : fields) {
-			if (skipField != null && f.getName().equals(skipField)) {
+			if (f.getName().equals(skipField)) {
 				continue;
 			}
 			

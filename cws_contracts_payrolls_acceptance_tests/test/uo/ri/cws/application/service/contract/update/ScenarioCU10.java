@@ -16,8 +16,8 @@ import uo.ri.cws.application.service.util.dtobuilders.ContractDtoBuilder;
  * Scenario Outline: [C.U.10] Try to update a contract with wrong salary
  */
 public class ScenarioCU10 {
-	private ExceptionBox ctx = new ExceptionBox();
-	private ContractCrudService service = Factories.service.forContractCrudService();
+	private final ExceptionBox ctx = new ExceptionBox();
+	private final ContractCrudService service = Factories.service.forContractCrudService();
 	private TContractsRecord original;
 
 	@Given("[C.U.10] an in-force contract")

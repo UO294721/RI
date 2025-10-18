@@ -90,7 +90,7 @@ public class InvoiceWorkOrderWorkOrderGatewayImpl implements InvoiceWorkOrderGat
                     .prepareStatement(Queries.getSQLSentence(
                             "TWORKORDERS_FINDNOTINVOICED"))) {
                 pst.setString(1, nif);
-                try (ResultSet rs = pst.executeQuery();) {
+                try (ResultSet rs = pst.executeQuery()) {
                     while (rs.next()) {
                         notInvoicedWorkOrders.add(InvoiceRecordAssembler.toRecord(rs));
                     }

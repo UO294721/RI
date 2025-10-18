@@ -10,8 +10,8 @@ import uo.ri.cws.application.service.util.ExceptionBox;
  * Scenario Outline: [Pg.F.4] Try to find a professional group with wrong arg
  */
 public class ScenarioPgF4 {
-    private ProfessionalGroupCrudService service = Factories.service.forProfessionalGroupCrudService();
-    private ExceptionBox ctx = new ExceptionBox();
+    private final ProfessionalGroupCrudService service = Factories.service.forProfessionalGroupCrudService();
+    private final ExceptionBox ctx = new ExceptionBox();
 
     @When("[Pg.F.4] I try to find a professional group with name {string}")
     public void whenITryToFindAProfessionalGroupWithName(String name) {

@@ -17,8 +17,8 @@ import uo.ri.cws.application.service.util.dbfixture.records.TWorkOrdersRecord;
  * Scenario: [I.C.9] Trying to create one invoice and one of the id is null
  */
 public class ScenarioIC9 {
-    private InvoicingService service = Factories.service.forCreateInvoiceService();
-    private ExceptionBox ctx = new ExceptionBox();
+    private final InvoicingService service = Factories.service.forCreateInvoiceService();
+    private final ExceptionBox ctx = new ExceptionBox();
     private List<TWorkOrdersRecord> workOrders;
     private List<String> workOrderIds;
 

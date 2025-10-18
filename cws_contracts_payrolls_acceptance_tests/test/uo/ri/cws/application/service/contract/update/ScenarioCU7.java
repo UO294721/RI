@@ -11,8 +11,8 @@ import uo.ri.cws.application.service.util.ExceptionBox;
  * Scenario: [C.U.7] Try to update a null contract
  */
 public class ScenarioCU7 {
-	private ExceptionBox ctx = new ExceptionBox();
-	private ContractCrudService service = Factories.service.forContractCrudService();
+	private final ExceptionBox ctx = new ExceptionBox();
+	private final ContractCrudService service = Factories.service.forContractCrudService();
 
 	@When("[C.U.7] I try to update a null contract")
 	public void whenITryToUpdateANullContract() {

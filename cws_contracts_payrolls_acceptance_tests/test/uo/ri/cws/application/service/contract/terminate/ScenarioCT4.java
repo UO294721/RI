@@ -11,8 +11,8 @@ import uo.ri.cws.application.service.util.ExceptionBox;
  * Scenario: [C.T.4] Try to terminate a non existent contract
  */
 public class ScenarioCT4 {
-    private ContractCrudService service = Factories.service.forContractCrudService();
-    private ExceptionBox ctx = new ExceptionBox();
+    private final ContractCrudService service = Factories.service.forContractCrudService();
+    private final ExceptionBox ctx = new ExceptionBox();
 
     @When("[C.T.4] I try to terminate a non existent contract")
     public void whenITryToTerminateNonExistentContract() {

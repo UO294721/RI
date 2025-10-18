@@ -17,8 +17,8 @@ import uo.ri.cws.application.service.util.dbfixture.records.TWorkOrdersRecord;
  * Scenario: [I.C.5] Trying to create one invoice there is one workorder OPEN
  */
 public class ScenarioIC5 {
-    private InvoicingService service = Factories.service.forCreateInvoiceService();
-    private ExceptionBox ctx = new ExceptionBox();
+    private final InvoicingService service = Factories.service.forCreateInvoiceService();
+    private final ExceptionBox ctx = new ExceptionBox();
     private List<TWorkOrdersRecord> workOrders;
     private List<String> workOrderIds;
 

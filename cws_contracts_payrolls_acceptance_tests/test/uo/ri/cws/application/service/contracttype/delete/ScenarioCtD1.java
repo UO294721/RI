@@ -17,7 +17,7 @@ import uo.ri.util.exception.BusinessException;
  * Scenario: [Ct.D.1] Delete a contract type
  */
 public class ScenarioCtD1 {
-	private ContractTypeCrudService service = Factories.service.forContractTypeCrudService();
+	private final ContractTypeCrudService service = Factories.service.forContractTypeCrudService();
 	private TContractTypesRecord contractType;
 
 	@Given("[Ct.D.1] a contract type with no contracts")

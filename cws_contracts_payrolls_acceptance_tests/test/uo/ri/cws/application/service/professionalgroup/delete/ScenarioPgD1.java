@@ -16,7 +16,7 @@ import uo.ri.util.exception.BusinessException;
  * Scenario: [Pg.D.1] Delete a professional group with no contracts
  */
 public class ScenarioPgD1 {
-    private ProfessionalGroupCrudService service = Factories.service.forProfessionalGroupCrudService();
+    private final ProfessionalGroupCrudService service = Factories.service.forProfessionalGroupCrudService();
 	private TProfessionalGroupsRecord professionalGroup;
 
     @Given("[Pg.D.1] a professional group with no contracts")

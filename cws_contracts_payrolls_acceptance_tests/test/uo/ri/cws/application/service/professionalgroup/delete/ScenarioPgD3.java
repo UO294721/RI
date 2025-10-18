@@ -10,8 +10,8 @@ import uo.ri.cws.application.service.util.ExceptionBox;
  * Scenario: [Pg.D.3] Try to del a non existent professional group
  */
 public class ScenarioPgD3 {
-    private ExceptionBox ctx = new ExceptionBox();
-    private ProfessionalGroupCrudService service = Factories.service.forProfessionalGroupCrudService();
+    private final ExceptionBox ctx = new ExceptionBox();
+    private final ProfessionalGroupCrudService service = Factories.service.forProfessionalGroupCrudService();
 
     @When("[Pg.D.3] I try to del a non existent professional group")
     public void whenITryToDelANonExistentProfessionalGroup() {

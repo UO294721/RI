@@ -11,8 +11,8 @@ import uo.ri.cws.application.service.util.ExceptionBox;
  * Scenario: [Ct.D.2] Try to delete a non existent contract type
  */
 public class ScenarioCtD2 {
-	private ExceptionBox ctx = new ExceptionBox();
-	private ContractTypeCrudService service = Factories.service.forContractTypeCrudService();
+	private final ExceptionBox ctx = new ExceptionBox();
+	private final ContractTypeCrudService service = Factories.service.forContractTypeCrudService();
 
 	@When("[Ct.D.2] I try to delete a non existent contract type")
 	public void whenITryToDelANonExistentContractType() {

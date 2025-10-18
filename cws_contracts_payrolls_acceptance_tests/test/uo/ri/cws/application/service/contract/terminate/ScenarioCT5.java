@@ -11,8 +11,8 @@ import uo.ri.cws.application.service.util.ExceptionBox;
  * Scenario Outline: [C.T.5] Try to terminate a contract with wrong id
  */
 public class ScenarioCT5 {
-    private ContractCrudService service = Factories.service.forContractCrudService();
-    private ExceptionBox ctx = new ExceptionBox();
+    private final ContractCrudService service = Factories.service.forContractCrudService();
+    private final ExceptionBox ctx = new ExceptionBox();
 
     @When("[C.T.5] I try to terminate a contract with wrong {string}")
     public void whenITryToTerminateContractWithWrongId(String id) {

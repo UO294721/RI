@@ -18,8 +18,8 @@ import uo.ri.cws.application.service.util.dtobuilders.ContractDtoBuilder;
  * Scenario: [C.A.11] Try to add a contract with null end date when mandatory
  */
 public class ScenarioCA11 {
-    private ExceptionBox ctx = new ExceptionBox();
-    private ContractCrudService service = Factories.service.forContractCrudService();
+    private final ExceptionBox ctx = new ExceptionBox();
+    private final ContractCrudService service = Factories.service.forContractCrudService();
 
     @When("[C.A.11] I try to add a contract with null end date for FIXED_TERM contract type")
     public void whenITryToAddAContractWithNullEndDateForFixedTermContractType() {

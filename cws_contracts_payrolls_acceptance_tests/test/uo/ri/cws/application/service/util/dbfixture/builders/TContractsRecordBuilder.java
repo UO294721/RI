@@ -8,7 +8,7 @@ import uo.ri.cws.application.service.util.dbfixture.records.TContractsRecord;
 
 public class TContractsRecordBuilder {
 
-	private TContractsRecord record = createDefaultRecord();
+	private final TContractsRecord record = createDefaultRecord();
 
 	public TContractsRecordBuilder withId(String id) {
 		record.id = id;

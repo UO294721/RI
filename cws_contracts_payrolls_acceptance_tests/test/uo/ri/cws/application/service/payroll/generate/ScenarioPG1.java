@@ -17,7 +17,7 @@ import uo.ri.util.exception.BusinessException;
  * Scenario: [P.G.1] Generate payrolls but no mechanic
  */
 public class ScenarioPG1 {
-    private PayrollService service = Factories.service.forPayrollService();
+    private final PayrollService service = Factories.service.forPayrollService();
 
     @When("[P.G.1] I generate payrolls")
     public void whenIGeneratePayrolls() throws BusinessException {

@@ -1,11 +1,8 @@
 package uo.ri.cws.application.service.util;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.fail;
-
 import uo.ri.util.exception.BusinessException;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ExceptionBox {
 	@FunctionalInterface
@@ -26,14 +23,14 @@ public class ExceptionBox {
 
 	public void assertBusinessExceptionWithMessage() {
 		assertNotNull( exception );
-		assertTrue(exception instanceof BusinessException);
+		assertInstanceOf(uo.ri.util.exception.BusinessException.class, exception);
 		assertNotNull( exception.getMessage() );
 		assertFalse( exception.getMessage().isBlank() );	
 	}
 
 	public void assertIllegalArgumentExceptionWithMessage() {
 		assertNotNull(exception);
-		assertTrue(exception instanceof IllegalArgumentException);
+		assertInstanceOf(IllegalArgumentException.class, exception);
 		assertNotNull(exception.getMessage());
 		assertFalse(exception.getMessage().isBlank());
 	}

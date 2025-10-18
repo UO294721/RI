@@ -4,9 +4,9 @@ import uo.ri.cws.application.service.util.dbfixture.records.TPayrollsRecord;
 
 public class PayrollTotalizer {
 
-	private double grossSalary;
-	private double totalDeductions;
-	private double netSalary;
+	private final double grossSalary;
+	private final double totalDeductions;
+	private final double netSalary;
 
 	public PayrollTotalizer(TPayrollsRecord r) {
 		grossSalary = r.baseSalary

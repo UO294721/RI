@@ -10,8 +10,8 @@ import uo.ri.cws.application.service.util.dbfixture.DbFixtures;
 import uo.ri.cws.application.service.util.dbfixture.records.TMechanicsRecord;
 
 public class ScenarioMD6 {
-	private ExceptionBox ctx = new ExceptionBox();
-	private MechanicCrudService service = Factories.service.forMechanicCrudService();
+	private final ExceptionBox ctx = new ExceptionBox();
+	private final MechanicCrudService service = Factories.service.forMechanicCrudService();
 	private String mechanicId;
 
 	@Given("[M.D.6] a mechanic with a contract in force")

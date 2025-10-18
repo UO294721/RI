@@ -15,8 +15,8 @@ import uo.ri.util.exception.BusinessException;
 
 public class UpdateMechanic implements Command<Void>{
 	
-	private MechanicDto dto;
-	private MechanicGateway mg = Factories.persistence.forMechanic();
+	private final MechanicDto dto;
+	private final MechanicGateway mg = Factories.persistence.forMechanic();
 
 	public UpdateMechanic(MechanicDto dto) {
 		this.dto = dto;

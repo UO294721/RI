@@ -21,7 +21,7 @@ import uo.ri.util.exception.BusinessException;
  * 		with no payrolls.
  */
 public class ScenarioCF10 {
-	private ContractCrudService service = Factories.service.forContractCrudService();
+	private final ContractCrudService service = Factories.service.forContractCrudService();
 	private TMechanicsRecord mechanic;
 	private List<ContractSummaryDto> result;
 	private List<TContractsRecord> contracts;

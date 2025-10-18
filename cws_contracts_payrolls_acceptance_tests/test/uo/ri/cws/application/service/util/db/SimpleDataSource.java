@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import uo.ri.cws.application.service.util.db.ConnectionDataLoader.ConnectionData;
 
 public class SimpleDataSource {
-	private static ConnectionData conData = ConnectionDataLoader.getConnectionData();
+	private static final ConnectionData conData = ConnectionDataLoader.getConnectionData();
 
 	public static Connection getConnection() throws SQLException {
 			return DriverManager.getConnection(

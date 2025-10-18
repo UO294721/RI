@@ -8,8 +8,8 @@ import uo.ri.cws.application.service.mechanic.MechanicCrudService;
 import uo.ri.cws.application.service.util.ExceptionBox;
 
 public class ScenarioMD2 {
-	private ExceptionBox ctx = new ExceptionBox();
-	private MechanicCrudService service = Factories.service.forMechanicCrudService();
+	private final ExceptionBox ctx = new ExceptionBox();
+	private final MechanicCrudService service = Factories.service.forMechanicCrudService();
 
 	@When("[M.D.2] I try to remove a non existent mechanic")
 	public void whenITryToRemoveANonExistentMechanic() {

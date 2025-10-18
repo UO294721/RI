@@ -18,7 +18,7 @@ import uo.ri.util.exception.BusinessException;
  * Scenario: [W.FnI.2] Find not invoiced workorders by client nif with no workorders
  */
 public class ScenarioWFnI2 {
-	private InvoicingService service = Factories.service.forCreateInvoiceService();
+	private final InvoicingService service = Factories.service.forCreateInvoiceService();
 
 	private TClientsRecord client;
 	private List<InvoicingWorkOrderDto> found;

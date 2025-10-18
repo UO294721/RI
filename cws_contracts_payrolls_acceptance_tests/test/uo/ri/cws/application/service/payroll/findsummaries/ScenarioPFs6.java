@@ -11,8 +11,8 @@ import uo.ri.cws.application.service.util.ExceptionBox;
  * Scenario: [P.Fs.6] Find payrolls for a non existent mechanic
  */
 public class ScenarioPFs6 {
-	private PayrollService service = Factories.service.forPayrollService();
-	private ExceptionBox ctx = new ExceptionBox();
+	private final PayrollService service = Factories.service.forPayrollService();
+	private final ExceptionBox ctx = new ExceptionBox();
 
 	@When("[P.Fs.6] I try to find payrolls for a non existent mechanic")
 	public void whenITryToFindPayrollsForANonExistentMechanic() {

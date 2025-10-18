@@ -25,7 +25,7 @@ import uo.ri.util.exception.BusinessException;
  * Scenario: [P.G.4] Generate payrolls only for mechanics with an active contract.
  */
 public class ScenarioPG4 {
-    private PayrollService service = Factories.service.forPayrollService();
+    private final PayrollService service = Factories.service.forPayrollService();
 	private LocalDate today;
 	private List<PayrollDto> generated;
 

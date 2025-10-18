@@ -10,8 +10,8 @@ import uo.ri.cws.application.service.util.ExceptionBox;
  * Scenario: [I.C.7] Trying to create one invoice for a null argument
  */
 public class ScenarioIC7 {
-    private InvoicingService service = Factories.service.forCreateInvoiceService();
-    private ExceptionBox ctx = new ExceptionBox();
+    private final InvoicingService service = Factories.service.forCreateInvoiceService();
+    private final ExceptionBox ctx = new ExceptionBox();
 
     @When("[I.C.7] I try to create an invoice for a null list of workorders")
     public void whenITryToCreateInvoiceForNullList() {

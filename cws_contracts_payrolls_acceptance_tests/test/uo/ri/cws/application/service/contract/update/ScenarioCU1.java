@@ -22,7 +22,7 @@ import uo.ri.util.exception.BusinessException;
  * Scenario: [C.U.1] Update end date
  */
 public class ScenarioCU1 {
-	private ContractCrudService service = Factories.service.forContractCrudService();
+	private final ContractCrudService service = Factories.service.forContractCrudService();
 	private TContractsRecord original;
 	private TContractsRecord loaded;
 

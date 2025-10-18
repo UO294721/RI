@@ -17,7 +17,7 @@ import uo.ri.cws.application.service.util.dtobuilders.MechanicDtoBuilder;
 import uo.ri.util.exception.BusinessException;
 
 public class ScenarioMU1 {
-	private MechanicCrudService service = Factories.service.forMechanicCrudService();
+	private final MechanicCrudService service = Factories.service.forMechanicCrudService();
 	private TMechanicsRecord original;
     private TMechanicsRecord loaded;
 

@@ -13,8 +13,8 @@ import uo.ri.cws.application.service.util.dbfixture.records.TProfessionalGroupsR
  * Scenario: [Pg.D.4] Try to del a professional group involved in some contract
  */
 public class ScenarioPgD4 {
-    private ProfessionalGroupCrudService service = Factories.service.forProfessionalGroupCrudService();
-    private ExceptionBox ctx = new ExceptionBox();
+    private final ProfessionalGroupCrudService service = Factories.service.forProfessionalGroupCrudService();
+    private final ExceptionBox ctx = new ExceptionBox();
 
     private TProfessionalGroupsRecord professionalGroup;
 

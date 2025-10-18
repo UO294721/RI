@@ -3,6 +3,7 @@ package uo.ri.cws.application.service;
 import uo.ri.cws.application.service.client.ClientCrudService;
 import uo.ri.cws.application.service.client.ClientHistoryService;
 import uo.ri.cws.application.service.contract.ContractCrudService;
+import uo.ri.cws.application.service.contract.ContractCrudServiceImpl;
 import uo.ri.cws.application.service.contracttype.ContractTypeCrudService;
 import uo.ri.cws.application.service.contracttype.ContractTypeCrudServiceImpl;
 import uo.ri.cws.application.service.invoice.InvoicingService;
@@ -40,7 +41,7 @@ public class ServiceFactory {
     }
 
     public ContractCrudService forContractCrudService() {
-        throw new NotYetImplementedException();
+        return new ContractCrudServiceImpl();
     }
 
     public ContractTypeCrudService forContractTypeCrudService() {

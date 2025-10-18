@@ -10,8 +10,8 @@ import uo.ri.cws.application.service.util.ExceptionBox;
  * Scenario: [Ct.F.3] Try to find a contract type with wrong name
  */
 public class ScenarioCtF3 {
-    private ContractTypeCrudService service = Factories.service.forContractTypeCrudService();
-    private ExceptionBox ctx = new ExceptionBox();
+    private final ContractTypeCrudService service = Factories.service.forContractTypeCrudService();
+    private final ExceptionBox ctx = new ExceptionBox();
 
     @When("[Ct.F.3] I try to find a contract type with name null")
     public void whenITryToFindContractTypeWithNullName() {

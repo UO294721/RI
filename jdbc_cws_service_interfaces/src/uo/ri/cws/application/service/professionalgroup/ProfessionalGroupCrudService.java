@@ -49,7 +49,7 @@ public interface ProfessionalGroupCrudService {
 	void update(ProfessionalGroupDto dto) throws BusinessException;
 	
 	/**
-	 * @param name, of the category
+	 * @param id name, of the category
 	 * @return the contract category dto, probably empty
 	 * @throws IllegalArgumentException when
 	 * 		- id is null or empty
@@ -64,7 +64,7 @@ public interface ProfessionalGroupCrudService {
 	 */
 	List<ProfessionalGroupDto> findAll() throws BusinessException;
 
-	public class ProfessionalGroupDto {
+	class ProfessionalGroupDto {
 		public String id;
 		public long version;
 		

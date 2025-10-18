@@ -12,8 +12,8 @@ import uo.ri.cws.application.service.util.dtobuilders.ProfessionalGroupDtoBuilde
  * Scenario: [Pg.U.2] Try to update a non existent professional group
  */
 public class ScenarioPgU2 {
-    private ExceptionBox ctx = new ExceptionBox();
-    private ProfessionalGroupCrudService service = Factories.service.forProfessionalGroupCrudService();
+    private final ExceptionBox ctx = new ExceptionBox();
+    private final ProfessionalGroupCrudService service = Factories.service.forProfessionalGroupCrudService();
 
     @When("[Pg.U.2] I try to update a non existent professional group")
     public void whenITryToUpdateANonExistentProfessionalGroup() {

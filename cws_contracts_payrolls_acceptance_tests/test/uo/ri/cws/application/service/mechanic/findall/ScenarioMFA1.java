@@ -18,8 +18,8 @@ import uo.ri.cws.application.service.util.dbfixture.records.TMechanicsRecord;
 import uo.ri.util.exception.BusinessException;
 
 public class ScenarioMFA1 {
-    private MechanicCrudService service = Factories.service.forMechanicCrudService();
-    private List<TMechanicsRecord> expected = new ArrayList<>();
+    private final MechanicCrudService service = Factories.service.forMechanicCrudService();
+    private final List<TMechanicsRecord> expected = new ArrayList<>();
     private List<MechanicDto> result;
 
     @Given("[M.FA.1] the following relation of mechanics")

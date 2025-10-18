@@ -16,8 +16,8 @@ import uo.ri.cws.application.service.util.dtobuilders.ContractDtoBuilder;
  * Scenario: [C.U.6] Try to update a contract in the while (wrong version)
  */
 public class ScenarioCU6 {
-	private ExceptionBox ctx = new ExceptionBox();
-	private ContractCrudService service = Factories.service.forContractCrudService();
+	private final ExceptionBox ctx = new ExceptionBox();
+	private final ContractCrudService service = Factories.service.forContractCrudService();
 	private TContractsRecord contract;
 
 	@Given("[C.U.6] an in-force contract")

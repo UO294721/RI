@@ -26,7 +26,7 @@ public class ScenarioCT2 {
 	private static final double BASE_MONTH_SALARY = 1000.0;  
 	private static final double COMPENSATION_DAYS_PER_YEAR = 25;
 
-	private ContractCrudService service = Factories.service.forContractCrudService();
+	private final ContractCrudService service = Factories.service.forContractCrudService();
     private TContractsRecord contract;
     private TMechanicsRecord mechanic;
 	private double expectedSettlement;

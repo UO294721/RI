@@ -29,7 +29,7 @@ import uo.ri.util.exception.BusinessException;
  * Scenario Outline: [P.G.3] Generate payrolls for a mechanic in force last month
  */
 public class ScenarioPG3 {
-    private PayrollService service = Factories.service.forPayrollService();
+    private final PayrollService service = Factories.service.forPayrollService();
     private TMechanicsRecord mechanic;
     private TContractsRecord contract;
     private TProfessionalGroupsRecord professionalGroup;

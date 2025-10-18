@@ -18,8 +18,8 @@ import uo.ri.cws.application.service.util.dtobuilders.ContractDtoBuilder;
  * Scenario: [C.A.7] Try to add a contract with end date earlier than start date
  */
 public class ScenarioCA7 {
-    private ExceptionBox ctx = new ExceptionBox();
-    private ContractCrudService service = Factories.service.forContractCrudService();
+    private final ExceptionBox ctx = new ExceptionBox();
+    private final ContractCrudService service = Factories.service.forContractCrudService();
 
     @When("[C.A.7] I try to add a contract with end date not later than start date")
     public void whenITryToAddAContractWithEndDateNotLaterThanStartDate() {

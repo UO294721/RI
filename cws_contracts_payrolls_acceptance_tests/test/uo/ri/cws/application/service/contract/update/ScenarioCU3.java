@@ -13,8 +13,8 @@ import uo.ri.cws.application.service.util.dtobuilders.ContractDtoBuilder;
  * Scenario: [C.U.3] Try to update a non existing contract
  */
 public class ScenarioCU3 {
-	private ExceptionBox ctx = new ExceptionBox();
-	private ContractCrudService service = Factories.service.forContractCrudService();
+	private final ExceptionBox ctx = new ExceptionBox();
+	private final ContractCrudService service = Factories.service.forContractCrudService();
 
 	@When("[C.U.3] I try to update a non existing contract")
 	public void whenITryToUpdateANonExistingContract() {

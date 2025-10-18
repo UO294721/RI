@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 
 public interface WorkOrderGateway extends Gateway<WorkOrderGateway.WorkOrderRecord> {
 
-    public class WorkOrderRecord {
+    class WorkOrderRecord {
         public String id;
         public long version;
 

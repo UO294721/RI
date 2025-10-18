@@ -20,7 +20,7 @@ import uo.ri.util.exception.BusinessException;
  * Scenario: [P.Da.2] There are payrolls but not of previous month
  */
 public class ScenarioPDa2 {
-    private PayrollService service = Factories.service.forPayrollService();
+    private final PayrollService service = Factories.service.forPayrollService();
     private int initialPayrollCount;
 	private int numOfDeleted;
 

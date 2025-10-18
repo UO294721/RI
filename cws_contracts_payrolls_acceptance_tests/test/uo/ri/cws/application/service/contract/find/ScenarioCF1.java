@@ -16,7 +16,7 @@ import uo.ri.util.exception.BusinessException;
  * Scenario: [C.F.1] Find all contracts when there are none
  */
 public class ScenarioCF1 {
-	private ContractCrudService service = Factories.service.forContractCrudService();
+	private final ContractCrudService service = Factories.service.forContractCrudService();
 	private List<ContractSummaryDto> result;
 
 	@When("[C.F.1] I search for all contracts")

@@ -15,7 +15,7 @@ import uo.ri.util.exception.BusinessException;
  * Scenario: [Pg.F.3] Find a non existent professional group
  */
 public class ScenarioPgF3 {
-    private ProfessionalGroupCrudService service = Factories.service.forProfessionalGroupCrudService();
+    private final ProfessionalGroupCrudService service = Factories.service.forProfessionalGroupCrudService();
     private Optional<ProfessionalGroupDto> result;
 
     @When("[Pg.F.3] I search a non existing professional group")

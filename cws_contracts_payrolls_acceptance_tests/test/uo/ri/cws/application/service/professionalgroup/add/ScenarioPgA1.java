@@ -19,7 +19,7 @@ import uo.ri.util.exception.BusinessException;
  * Scenario: [Pg.A.1] Add a new professional group
  */
 public class ScenarioPgA1 {
-    private ProfessionalGroupCrudService service = Factories.service.forProfessionalGroupCrudService();
+    private final ProfessionalGroupCrudService service = Factories.service.forProfessionalGroupCrudService();
     private ProfessionalGroupDto newProfessionalGroup;
     private ProfessionalGroupDto generated;
 

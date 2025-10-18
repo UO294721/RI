@@ -6,7 +6,7 @@ import uo.ri.cws.application.service.mechanic.MechanicCrudService.MechanicDto;
 
 public class MechanicDtoBuilder {
 
-	private MechanicDto dto = createDefaultMechanic();
+	private final MechanicDto dto = createDefaultMechanic();
 
 	public MechanicDtoBuilder withId(String id) {
 		dto.id = id;

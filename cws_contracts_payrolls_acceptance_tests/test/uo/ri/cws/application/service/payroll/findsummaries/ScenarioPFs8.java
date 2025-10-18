@@ -21,7 +21,7 @@ import uo.ri.util.exception.BusinessException;
  * Scenario: [P.Fs.8] Find payrolls for a professional group with one payroll
  */
 public class ScenarioPFs8 {
-	private PayrollService service = Factories.service.forPayrollService();
+	private final PayrollService service = Factories.service.forPayrollService();
 	private TProfessionalGroupsRecord professionalGroup;
 	private TPayrollsRecord payroll;
 	private List<PayrollSummaryDto> result;

@@ -11,8 +11,8 @@ import uo.ri.cws.application.service.util.ExceptionBox;
  * Scenario: [P.Fs.7] Try to find a payroll with invalid mechanic id
  */
 public class ScenarioPFs7 {
-	private PayrollService service = Factories.service.forPayrollService();
-	private ExceptionBox ctx = new ExceptionBox();
+	private final PayrollService service = Factories.service.forPayrollService();
+	private final ExceptionBox ctx = new ExceptionBox();
 
 	@When("[P.Fs.7] I try to find payrolls with an invalid mechanic {string}")
 	public void whenITryToFindPayrollsWithAnInvalidMechanicId(String id) {

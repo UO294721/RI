@@ -62,7 +62,7 @@ public interface ContractTypeCrudService {
 	List<ContractTypeDto> findAll() throws BusinessException;
 
 
-	public class ContractTypeDto {
+	class ContractTypeDto {
 		public String id;
 		public long version;
 		

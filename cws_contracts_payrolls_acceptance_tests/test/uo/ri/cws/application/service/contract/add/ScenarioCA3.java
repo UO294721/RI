@@ -22,7 +22,7 @@ import uo.ri.util.exception.BusinessException;
  * Scenario: [C.A.3] Hire an existing mechanic with previous contract terminated
  */
 public class ScenarioCA3 {
-    private ContractCrudService service = Factories.service.forContractCrudService();
+    private final ContractCrudService service = Factories.service.forContractCrudService();
     private TMechanicsRecord mechanic;
     private ContractDto addedContract;
 	private TContractTypesRecord contractType;

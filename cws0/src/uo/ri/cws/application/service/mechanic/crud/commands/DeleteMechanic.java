@@ -1,10 +1,5 @@
 package uo.ri.cws.application.service.mechanic.crud.commands;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
 import uo.ri.conf.Factories;
 import uo.ri.cws.application.persistence.PersistenceException;
 import uo.ri.cws.application.persistence.contract.ContractGateway;
@@ -14,15 +9,14 @@ import uo.ri.cws.application.persistence.util.command.Command;
 import uo.ri.cws.application.persistence.workorder.WorkOrderGateway;
 import uo.ri.util.assertion.ArgumentChecks;
 import uo.ri.util.exception.BusinessException;
-import uo.ri.util.jdbc.Jdbc;
 
 public class DeleteMechanic implements Command<Void> {
 	
-	private String id;
-    private MechanicGateway mg = Factories.persistence.forMechanic();
-    private WorkOrderGateway wg = Factories.persistence.forWorkOrder();
-    private InterventionGateway ig = Factories.persistence.forIntervention();
-    private ContractGateway cg = Factories.persistence.forContract();
+	private final String id;
+    private final MechanicGateway mg = Factories.persistence.forMechanic();
+    private final WorkOrderGateway wg = Factories.persistence.forWorkOrder();
+    private final InterventionGateway ig = Factories.persistence.forIntervention();
+    private final ContractGateway cg = Factories.persistence.forContract();
 
 	public DeleteMechanic(String id) {
 		ArgumentChecks.isNotNull(id);
@@ -40,10 +34,10 @@ public class DeleteMechanic implements Command<Void> {
             if(ig.hasInterventions(id))
                 throw new BusinessException("There are interventions associated to the mechanic");
 
-            if(cg.hasInForceContract(id))
+            if(cg.findInforceByMechanicId(id).isPresent())
                 throw new BusinessException("There is a contract in force");
 
-            if(cg.hasTerminatedContract(id))
+            if(!cg.findByMechanicId(id).isEmpty())
                 throw new BusinessException("The mechanic has a terminated contract");
 
             mg.remove(id);

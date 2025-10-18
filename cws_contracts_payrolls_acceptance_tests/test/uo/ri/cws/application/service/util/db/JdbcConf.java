@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.Properties;
 
 public class JdbcConf {
-    private static Properties props;
+    private static final Properties props;
     private static final String FILE_CONF = "connection.properties";
 
     static {

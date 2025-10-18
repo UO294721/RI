@@ -26,7 +26,7 @@ import uo.ri.util.exception.BusinessException;
  */
 public class ScenarioCT1 {
     private static final int SIX_MONTHS = 6;
-	private ContractCrudService service = Factories.service.forContractCrudService();
+	private final ContractCrudService service = Factories.service.forContractCrudService();
     private TContractsRecord contract;
     private TMechanicsRecord mechanic;
 

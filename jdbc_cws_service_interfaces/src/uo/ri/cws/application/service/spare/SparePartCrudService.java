@@ -1,8 +1,8 @@
 package uo.ri.cws.application.service.spare;
 
-import java.util.Optional;
-
 import uo.ri.util.exception.BusinessException;
+
+import java.util.Optional;
 
 /**
  * This service is intended to be used by the Manager
@@ -26,7 +26,7 @@ public interface SparePartCrudService {
 	/**
 	 * Removes the spare part from the system if the spare part has not been
 	 * 		used under any of its associations
-	 * @param spare part code
+	 * @param code spare part code
 	 * @throws BusinessException if case of:
 	 * 	- there is no spare part with such code
 	 * 	- the spare part has supplies
@@ -60,7 +60,7 @@ public interface SparePartCrudService {
 	 * 		@see SparePartReportService.findByCode, but this one returns
 	 * 		@see SparePartDto instead of
 	 * 		@see SparePartReportDto (that).
-	 * @param spare part code
+	 * @param code spare part code
 	 * @return the spare part identified by the code or Optional.empty() if
 	 * 		does not exist
 	 * @throws BusinessException DOES NOT
@@ -68,7 +68,7 @@ public interface SparePartCrudService {
 	 */
 	Optional<SparePartDto> findByCode(String code) throws BusinessException;
 
-	public static class SparePartDto {
+	class SparePartDto {
 		public String id;
 		public long version;
 

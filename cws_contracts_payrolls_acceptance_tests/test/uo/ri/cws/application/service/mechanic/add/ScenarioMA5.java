@@ -10,8 +10,8 @@ import uo.ri.cws.application.service.util.ExceptionBox;
 import uo.ri.cws.application.service.util.dtobuilders.MechanicDtoBuilder;
 
 public class ScenarioMA5 {
-	private ExceptionBox ctx = new ExceptionBox();
-	private MechanicCrudService service = Factories.service
+	private final ExceptionBox ctx = new ExceptionBox();
+	private final MechanicCrudService service = Factories.service
 			.forMechanicCrudService();
 
 	@When("[M.A.5] I try to add a new mechanic with {string}, {string}, {string}")

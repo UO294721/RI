@@ -11,8 +11,8 @@ import uo.ri.cws.application.service.util.ExceptionBox;
  * Scenario: [P.Fs.12] Try to find a payroll with invalid professional group name
  */
 public class ScenarioPFs12 {
-	private PayrollService service = Factories.service.forPayrollService();
-	private ExceptionBox ctx = new ExceptionBox();
+	private final PayrollService service = Factories.service.forPayrollService();
+	private final ExceptionBox ctx = new ExceptionBox();
 
 	@When("[P.Fs.12] I try to find payrolls with invalid professional group {string}")
 	public void whenITryToFindPayrollsWithInvalidProfessionalGroupName(String name) {

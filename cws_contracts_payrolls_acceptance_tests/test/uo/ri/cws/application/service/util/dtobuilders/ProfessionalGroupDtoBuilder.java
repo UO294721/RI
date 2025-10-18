@@ -7,8 +7,8 @@ import uo.ri.util.math.Rounds;
 import uo.ri.util.random.Random;
 
 public class ProfessionalGroupDtoBuilder {
-	private ProfessionalGroupDto dto = createRandomProfessionalGroupDto();;
-
+	private final ProfessionalGroupDto dto = createRandomProfessionalGroupDto();
+	
 	public ProfessionalGroupDto build() {
 		return dto;
 	}

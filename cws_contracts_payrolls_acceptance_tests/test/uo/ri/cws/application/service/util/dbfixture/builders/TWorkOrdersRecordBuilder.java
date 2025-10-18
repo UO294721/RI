@@ -8,7 +8,7 @@ import uo.ri.cws.application.service.util.dbfixture.records.TWorkOrdersRecord;
 
 public class TWorkOrdersRecordBuilder {
 
-	private TWorkOrdersRecord record = createDefaultRecord();
+	private final TWorkOrdersRecord record = createDefaultRecord();
 
 	public TWorkOrdersRecordBuilder withId(String id) {
 		record.id = id;

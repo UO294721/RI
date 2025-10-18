@@ -9,7 +9,7 @@ import java.util.Random;
 
 public class Dates {
 
-	private static Random rnd = new Random();
+	private static final Random rnd = new Random();
 	
 	public static LocalDate firstDayOfNextMonth() {
 		return LocalDate.now().with(TemporalAdjusters.firstDayOfNextMonth());

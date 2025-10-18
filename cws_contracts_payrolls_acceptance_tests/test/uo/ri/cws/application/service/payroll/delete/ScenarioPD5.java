@@ -11,8 +11,8 @@ import uo.ri.cws.application.service.util.ExceptionBox;
  * Scenario: [P.D.5] Try to delete previous month payroll for a non existent mechanic
  */
 public class ScenarioPD5 {
-    private PayrollService service = Factories.service.forPayrollService();
-    private ExceptionBox ctx = new ExceptionBox();
+    private final PayrollService service = Factories.service.forPayrollService();
+    private final ExceptionBox ctx = new ExceptionBox();
 
     @When("[P.D.5] I try to delete previous month payroll for a non existent mechanic")
     public void whenITryToDeletePreviousMonthPayrollForANonExistentMechanic() {

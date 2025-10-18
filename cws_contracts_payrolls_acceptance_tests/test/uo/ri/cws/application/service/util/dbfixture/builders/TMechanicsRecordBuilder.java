@@ -8,7 +8,7 @@ import uo.ri.cws.application.service.util.dbfixture.records.TMechanicsRecord;
 
 public class TMechanicsRecordBuilder {
 
-	private TMechanicsRecord record = createDefaultRecord();
+	private final TMechanicsRecord record = createDefaultRecord();
 
 	public TMechanicsRecordBuilder withId(String id) {
 		record.id = id;
@@ -58,8 +58,8 @@ public class TMechanicsRecordBuilder {
 		TMechanicsRecord defaultRecord = new TMechanicsRecord();
 		defaultRecord.id = UUID.randomUUID().toString();
 		defaultRecord.name = "Default Name " + defaultRecord.id.substring(0, 5);
-		defaultRecord.nif = "Default NIF " + defaultRecord.id.substring(0, 5);;
-		defaultRecord.surname = "Default Surname " + defaultRecord.id.substring(0, 5);;
+		defaultRecord.nif = "Default NIF " + defaultRecord.id.substring(0, 5);
+		defaultRecord.surname = "Default Surname " + defaultRecord.id.substring(0, 5);
 		defaultRecord.version = 1L;
 		defaultRecord.createdAt = new Timestamp(System.currentTimeMillis());
 		defaultRecord.updatedAt = new Timestamp(System.currentTimeMillis());

@@ -20,7 +20,7 @@ import uo.ri.util.exception.BusinessException;
  * Scenario: [P.D.1] Delete previous month payroll for a mechanic with no payroll
  */
 public class ScenarioPD1 {
-    private PayrollService service = Factories.service.forPayrollService();
+    private final PayrollService service = Factories.service.forPayrollService();
     private TMechanicsRecord mechanic;
 
     @Given("[P.D.1] a mechanic with a contract in force but still no payrolls")

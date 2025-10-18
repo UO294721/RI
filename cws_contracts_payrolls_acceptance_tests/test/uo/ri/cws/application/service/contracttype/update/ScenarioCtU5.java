@@ -16,8 +16,8 @@ import uo.ri.cws.application.service.util.dtobuilders.ContractTypeDtoBuilder;
  * Scenario: [Ct.U.5] Try to update a contract type in the while (wrong version)
  */
 public class ScenarioCtU5 {
-	private ExceptionBox ctx = new ExceptionBox();
-	private ContractTypeCrudService service = Factories.service.forContractTypeCrudService();
+	private final ExceptionBox ctx = new ExceptionBox();
+	private final ContractTypeCrudService service = Factories.service.forContractTypeCrudService();
 	private TContractTypesRecord contractType;
 
 	@Given("[Ct.U.5] a registered contract type")

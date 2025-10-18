@@ -11,8 +11,8 @@ import uo.ri.cws.application.service.util.ExceptionBox;
  * Scenario: [Ct.U.3] Try to update a contract type with null arg
  */
 public class ScenarioCtU3 {
-	private ExceptionBox ctx = new ExceptionBox();
-	private ContractTypeCrudService service = Factories.service.forContractTypeCrudService();
+	private final ExceptionBox ctx = new ExceptionBox();
+	private final ContractTypeCrudService service = Factories.service.forContractTypeCrudService();
 
 	@When("[Ct.U.3] I try to update a contract type with null arg")
 	public void whenITryToUpdateAContractTypeWithNullArg() {

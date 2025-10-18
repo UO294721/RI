@@ -13,8 +13,8 @@ import uo.ri.cws.application.service.util.dtobuilders.ContractDtoBuilder;
  * Scenario: [C.U.8] Try to update a contract with null id
  */
 public class ScenarioCU8 {
-	private ExceptionBox ctx = new ExceptionBox();
-	private ContractCrudService service = Factories.service.forContractCrudService();
+	private final ExceptionBox ctx = new ExceptionBox();
+	private final ContractCrudService service = Factories.service.forContractCrudService();
 
 	@When("[C.U.8] I try to update a contract with null id")
 	public void whenITryToUpdateAContractWithNullId() {

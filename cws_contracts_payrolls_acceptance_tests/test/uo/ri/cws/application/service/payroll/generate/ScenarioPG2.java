@@ -20,7 +20,7 @@ import uo.ri.util.exception.BusinessException;
  * Scenario: [P.G.2] Generate payrolls for a mechanic with no active contract last month
  */
 public class ScenarioPG2 {
-    private PayrollService service = Factories.service.forPayrollService();
+    private final PayrollService service = Factories.service.forPayrollService();
     private TMechanicsRecord mechanic;
 
     @Given("[P.G.2] a mechanic with several contracts but none active")

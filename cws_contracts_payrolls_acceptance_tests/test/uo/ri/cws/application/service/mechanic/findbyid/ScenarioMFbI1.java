@@ -16,7 +16,7 @@ import uo.ri.cws.application.service.util.dbfixture.records.TMechanicsRecord;
 import uo.ri.util.exception.BusinessException;
 
 public class ScenarioMFbI1 {
-    private MechanicCrudService service = Factories.service.forMechanicCrudService();
+    private final MechanicCrudService service = Factories.service.forMechanicCrudService();
     private TMechanicsRecord mechanic;
     private Optional<MechanicDto> result;
 

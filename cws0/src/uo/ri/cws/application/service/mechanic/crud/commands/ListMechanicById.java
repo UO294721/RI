@@ -19,8 +19,8 @@ import uo.ri.util.jdbc.Jdbc;
 
 public class ListMechanicById implements Command<Optional<MechanicDto>> {
 	
-	private String id;
-    private MechanicGateway mg = Factories.persistence.forMechanic();
+	private final String id;
+    private final MechanicGateway mg = Factories.persistence.forMechanic();
 	
 	public ListMechanicById( String id ) {
 		ArgumentChecks.isNotNull(id);

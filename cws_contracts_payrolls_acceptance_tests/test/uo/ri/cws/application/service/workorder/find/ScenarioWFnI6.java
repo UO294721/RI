@@ -10,8 +10,8 @@ import uo.ri.cws.application.service.util.ExceptionBox;
  * Scenario: [W.FnI.6] Try to find workorders with null argument
  */
 public class ScenarioWFnI6 {
-	private InvoicingService service = Factories.service.forCreateInvoiceService();
-	private ExceptionBox ctx = new ExceptionBox();
+	private final InvoicingService service = Factories.service.forCreateInvoiceService();
+	private final ExceptionBox ctx = new ExceptionBox();
 
 	@When("[W.FnI.6] I try to find workorders with null nif")
     public void whenITryToFindWorkordersWithNullNif() {

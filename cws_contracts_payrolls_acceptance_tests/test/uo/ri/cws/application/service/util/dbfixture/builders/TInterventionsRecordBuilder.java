@@ -8,7 +8,7 @@ import uo.ri.cws.application.service.util.dbfixture.records.TInterventionsRecord
 
 public class TInterventionsRecordBuilder {
 
-	private TInterventionsRecord record = createDefaultRecord();
+	private final TInterventionsRecord record = createDefaultRecord();
 
 	public TInterventionsRecordBuilder withId(String id) {
 		record.id = id;

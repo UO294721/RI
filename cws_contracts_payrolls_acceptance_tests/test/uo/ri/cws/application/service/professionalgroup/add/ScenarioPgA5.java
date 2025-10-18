@@ -12,8 +12,8 @@ import uo.ri.cws.application.service.util.dtobuilders.ProfessionalGroupDtoBuilde
  * Scenario: [Pg.A.5] Try to add a professional group with negative productivity plus
  */
 public class ScenarioPgA5 {
-    private ExceptionBox ctx = new ExceptionBox();
-    private ProfessionalGroupCrudService service = Factories.service.forProfessionalGroupCrudService();
+    private final ExceptionBox ctx = new ExceptionBox();
+    private final ProfessionalGroupCrudService service = Factories.service.forProfessionalGroupCrudService();
 
     @When("[Pg.A.5] I try to add a professional group with negative productivity plus")
     public void whenITryToAddAProfessionalGroupWithNegativeProductivityPlus() {

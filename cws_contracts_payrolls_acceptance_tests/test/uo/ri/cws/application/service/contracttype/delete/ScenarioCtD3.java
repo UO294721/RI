@@ -14,8 +14,8 @@ import uo.ri.cws.application.service.util.dbfixture.records.TContractTypesRecord
  * Scenario: [Ct.D.3] Try to delete a contract type with contracts
  */
 public class ScenarioCtD3 {
-	private ExceptionBox ctx = new ExceptionBox();
-	private ContractTypeCrudService service = Factories.service.forContractTypeCrudService();
+	private final ExceptionBox ctx = new ExceptionBox();
+	private final ContractTypeCrudService service = Factories.service.forContractTypeCrudService();
 	private String contractTypeId;
 
 	@Given("[Ct.D.3] a contract type with several contracts")

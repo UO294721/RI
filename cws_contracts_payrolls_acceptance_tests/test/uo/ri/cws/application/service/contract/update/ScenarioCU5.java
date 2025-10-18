@@ -18,8 +18,8 @@ import uo.ri.cws.application.service.util.dtobuilders.ContractDtoBuilder;
  * Scenario: [C.U.5] Try to update a contract with wrong end date
  */
 public class ScenarioCU5 {
-	private ExceptionBox ctx = new ExceptionBox();
-	private ContractCrudService service = Factories.service.forContractCrudService();
+	private final ExceptionBox ctx = new ExceptionBox();
+	private final ContractCrudService service = Factories.service.forContractCrudService();
 	private TContractsRecord contract;
 
 	@Given("[C.U.5] an in-force fixed-term contract")

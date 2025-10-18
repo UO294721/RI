@@ -9,8 +9,8 @@ import com.mchange.v2.c3p0.ComboPooledDataSource;
 import uo.ri.cws.application.service.util.db.ConnectionDataLoader.ConnectionData;
 
 public class C3p0DataSource {
-	private static ConnectionData conData = ConnectionDataLoader.getConnectionData();
-    private static ComboPooledDataSource pool = new ComboPooledDataSource();
+	private static final ConnectionData conData = ConnectionDataLoader.getConnectionData();
+    private static final ComboPooledDataSource pool = new ComboPooledDataSource();
 
     static {
         try {

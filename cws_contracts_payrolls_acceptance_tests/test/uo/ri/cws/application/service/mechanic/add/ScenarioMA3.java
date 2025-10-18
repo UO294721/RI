@@ -7,8 +7,8 @@ import uo.ri.cws.application.service.mechanic.MechanicCrudService;
 import uo.ri.cws.application.service.util.ExceptionBox;
 
 public class ScenarioMA3 {
-	private ExceptionBox ctx = new ExceptionBox();
-	private MechanicCrudService service = Factories.service.forMechanicCrudService();
+	private final ExceptionBox ctx = new ExceptionBox();
+	private final MechanicCrudService service = Factories.service.forMechanicCrudService();
 
 	@When("[M.A.3] I try to add a new mechanic with null argument")
 	public void whenITryToAddANewMechanicWithNullArgument() {

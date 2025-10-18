@@ -20,7 +20,7 @@ import uo.ri.util.exception.BusinessException;
  * Scenario: [Ct.U.1] Update an existent contract type
  */
 public class ScenarioCtU1 {
-	private ContractTypeCrudService service = Factories.service.forContractTypeCrudService();
+	private final ContractTypeCrudService service = Factories.service.forContractTypeCrudService();
 	private TContractTypesRecord original;
 	private TContractTypesRecord loaded;
 

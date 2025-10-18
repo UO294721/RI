@@ -15,8 +15,8 @@ import uo.ri.cws.application.service.util.dtobuilders.ProfessionalGroupDtoBuilde
  * Scenario: [Pg.U.3] Try to update a professional group in the while (wrong version)
  */
 public class ScenarioPgU3 {
-    private ProfessionalGroupCrudService service = Factories.service.forProfessionalGroupCrudService();
-    private ExceptionBox ctx = new ExceptionBox();
+    private final ProfessionalGroupCrudService service = Factories.service.forProfessionalGroupCrudService();
+    private final ExceptionBox ctx = new ExceptionBox();
 	private TProfessionalGroupsRecord original;
 
     @Given("[Pg.U.3] a registered professional group")

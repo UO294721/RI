@@ -15,8 +15,8 @@ import uo.ri.cws.application.service.util.dtobuilders.ProfessionalGroupDtoBuilde
  * Scenario: [Pg.U.4] Try to update a professional group with negative triennium
  */
 public class ScenarioPgU4 {
-    private ExceptionBox ctx = new ExceptionBox();
-    private ProfessionalGroupCrudService service = Factories.service.forProfessionalGroupCrudService();
+    private final ExceptionBox ctx = new ExceptionBox();
+    private final ProfessionalGroupCrudService service = Factories.service.forProfessionalGroupCrudService();
 	private TProfessionalGroupsRecord original;
 
     @Given("[Pg.U.4] a registered professional group")

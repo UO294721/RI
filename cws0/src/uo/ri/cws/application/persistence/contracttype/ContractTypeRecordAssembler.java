@@ -12,7 +12,7 @@ public class ContractTypeRecordAssembler {
         ContractTypeRecord record = new ContractTypeRecord();
         record.id = dto.id;
         record.name = dto.name;
-        record.compensationDaysPerYear = dto.compensationDays;
+        record.compensationDays = dto.compensationDays;
         record.version = dto.version;
         record.createdAt = LocalDateTime.now();
         record.updatedAt = LocalDateTime.now();
@@ -24,7 +24,7 @@ public class ContractTypeRecordAssembler {
         ContractTypeDto dto = new ContractTypeDto();
         dto.id = record.id;
         dto.name = record.name;
-        dto.compensationDays = record.compensationDaysPerYear;
+        dto.compensationDays = record.compensationDays;
         dto.version = record.version;
         return dto;
     }

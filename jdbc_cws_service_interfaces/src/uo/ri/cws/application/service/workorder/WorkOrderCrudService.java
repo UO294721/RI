@@ -14,7 +14,7 @@ public interface WorkOrderCrudService {
     Optional<WorkOrderDto> findById(String id) throws BusinessException;
     void update(WorkOrderDto dto) throws BusinessException;
 
-	public static class WorkOrderDto {
+	class WorkOrderDto {
 		public String id;
 		public long version;
 

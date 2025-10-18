@@ -15,8 +15,8 @@ import uo.ri.cws.application.service.util.dtobuilders.ProfessionalGroupDtoBuilde
  * Scenario: [Pg.U.5] Try to update a professional group with negative productivity plus
  */
 public class ScenarioPgU5 {
-    private ExceptionBox ctx = new ExceptionBox();
-    private ProfessionalGroupCrudService service = Factories.service.forProfessionalGroupCrudService();
+    private final ExceptionBox ctx = new ExceptionBox();
+    private final ProfessionalGroupCrudService service = Factories.service.forProfessionalGroupCrudService();
 	private TProfessionalGroupsRecord original;
 
     @Given("[Pg.U.5] a registered professional group")

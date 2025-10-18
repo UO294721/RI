@@ -13,8 +13,8 @@ import uo.ri.cws.application.service.util.dtobuilders.ContractDtoBuilder;
  * Scenario Outline: [C.U.9] Try to update a contract with wrong id
  */
 public class ScenarioCU9 {
-	private ExceptionBox ctx = new ExceptionBox();
-	private ContractCrudService service = Factories.service.forContractCrudService();
+	private final ExceptionBox ctx = new ExceptionBox();
+	private final ContractCrudService service = Factories.service.forContractCrudService();
 
 	@When("[C.U.9] I try to update a contract with id {string}")
 	public void whenITryToUpdateAContractWithId(String ident) {

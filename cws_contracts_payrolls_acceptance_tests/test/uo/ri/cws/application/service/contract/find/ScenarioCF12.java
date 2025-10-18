@@ -22,7 +22,7 @@ import uo.ri.util.exception.BusinessException;
  * 		several payrolls
  */
 public class ScenarioCF12 {
-	private ContractCrudService service = Factories.service.forContractCrudService();
+	private final ContractCrudService service = Factories.service.forContractCrudService();
 	private TMechanicsRecord mechanic;
 	private List<ContractSummaryDto> results;
 	private List<TContractsRecord> contracts;

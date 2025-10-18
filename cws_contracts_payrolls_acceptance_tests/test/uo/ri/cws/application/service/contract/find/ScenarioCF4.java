@@ -20,7 +20,7 @@ import uo.ri.util.exception.BusinessException;
  * Scenario: [C.F.4] Find by id an existent contract terminated
  */
 public class ScenarioCF4 {
-	private ContractCrudService service = Factories.service.forContractCrudService();
+	private final ContractCrudService service = Factories.service.forContractCrudService();
 	private TContractsRecord contract;
 	private Optional<ContractDto> result;
 

@@ -21,7 +21,7 @@ import uo.ri.util.exception.BusinessException;
  * Scenario: [P.Fs.4] Find payrolls for a mechanic with several payrolls
  */
 public class ScenarioPFs4 {
-	private PayrollService service = Factories.service.forPayrollService();
+	private final PayrollService service = Factories.service.forPayrollService();
 	private TMechanicsRecord mechanic;
 	private List<TPayrollsRecord> payrolls;
 	private List<PayrollSummaryDto> result;

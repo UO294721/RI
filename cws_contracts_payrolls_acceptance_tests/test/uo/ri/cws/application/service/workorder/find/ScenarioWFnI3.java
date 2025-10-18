@@ -20,7 +20,7 @@ import uo.ri.util.exception.BusinessException;
  * Scenario: [W.FnI.3] Find not invoiced workorders by client nif with some not finished workorders
  */
 public class ScenarioWFnI3 {
-	private InvoicingService service = Factories.service.forCreateInvoiceService();
+	private final InvoicingService service = Factories.service.forCreateInvoiceService();
 
 	private List<TWorkOrdersRecord> finishedWorkOrders;
 	private TClientsRecord client;

@@ -12,8 +12,8 @@ import uo.ri.util.assertion.ArgumentChecks;
 
 public class ListNotInvoicedWorkOrdersByNif implements Command<List<InvoicingWorkOrderDto>> {
 	
-	private String nif;
-    private InvoiceWorkOrderGateway ig = Factories.persistence.forInvoice();
+	private final String nif;
+    private final InvoiceWorkOrderGateway ig = Factories.persistence.forInvoice();
 
 	public ListNotInvoicedWorkOrdersByNif(String nif) {
 		ArgumentChecks.isNotNull(nif);

@@ -9,8 +9,8 @@ import uo.ri.cws.application.service.util.ExceptionBox;
 import uo.ri.cws.application.service.util.dtobuilders.MechanicDtoBuilder;
 
 public class ScenarioMU2 {
-	private ExceptionBox ctx = new ExceptionBox();
-	private MechanicCrudService service = Factories.service.forMechanicCrudService();
+	private final ExceptionBox ctx = new ExceptionBox();
+	private final MechanicCrudService service = Factories.service.forMechanicCrudService();
 
 	@When("[M.U.2] I try to update a non existing mechanic")
 	public void whenITryToUpdateANonExistingMechanic() {

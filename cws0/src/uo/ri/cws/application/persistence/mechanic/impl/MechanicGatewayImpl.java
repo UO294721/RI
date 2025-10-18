@@ -112,7 +112,7 @@ public class MechanicGatewayImpl implements MechanicGateway{
             try (PreparedStatement pst = c
                     .prepareStatement(Queries.getSQLSentence(
                             "TMECHANICS_FINDALL"))) {
-                try (ResultSet rs = pst.executeQuery();) {
+                try (ResultSet rs = pst.executeQuery()) {
                     while (rs.next()) {
                         mechanicsList.add(MechanicRecordAssembler.toRecord(rs));
                     }

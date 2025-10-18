@@ -21,7 +21,7 @@ import uo.ri.util.exception.BusinessException;
  * Scenario: [P.D.2] Delete previous month payroll for a mechanic with only one payroll
  */
 public class ScenarioPD2 {
-    private PayrollService service = Factories.service.forPayrollService();
+    private final PayrollService service = Factories.service.forPayrollService();
     private TMechanicsRecord mechanic;
     private TContractsRecord contract;
     private TPayrollsRecord payroll;

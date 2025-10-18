@@ -21,7 +21,7 @@ import uo.ri.util.exception.BusinessException;
  * Scenario: [P.Fs.2] Find payrolls when there are some
  */
 public class ScenarioPFs2 {
-	private PayrollService service = Factories.service.forPayrollService();
+	private final PayrollService service = Factories.service.forPayrollService();
 	private List<TPayrollsRecord> payrolls;
 	private List<PayrollSummaryDto> result;
 

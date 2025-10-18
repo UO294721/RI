@@ -22,7 +22,7 @@ import uo.ri.util.exception.BusinessException;
  * Scenario: [I.C.2] Create one invoice for multiple existing workorders
  */
 public class ScenarioIC2 {
-	private InvoicingService service = Factories.service.forCreateInvoiceService();
+	private final InvoicingService service = Factories.service.forCreateInvoiceService();
 
     private List<TWorkOrdersRecord> workOrders;
 	private InvoiceDto invoice;

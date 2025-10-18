@@ -13,8 +13,8 @@ import uo.ri.cws.application.service.util.dtobuilders.ContractTypeDtoBuilder;
  * Scenario Outline: [Ct.U.6] Try to update a contract type with empty name
  */
 public class ScenarioCtU6 {
-	private ExceptionBox ctx = new ExceptionBox();
-	private ContractTypeCrudService service = Factories.service.forContractTypeCrudService();
+	private final ExceptionBox ctx = new ExceptionBox();
+	private final ContractTypeCrudService service = Factories.service.forContractTypeCrudService();
 
 	@When("[Ct.U.6] I try to update a contract type with {string} name")
 	public void whenITryToUpdateAContractTypeWithName(String name) {

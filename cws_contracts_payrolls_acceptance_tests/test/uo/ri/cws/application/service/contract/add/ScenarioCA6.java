@@ -17,8 +17,8 @@ import uo.ri.cws.application.service.util.dtobuilders.ContractDtoBuilder;
  * Scenario: [C.A.6] Try to add a contract for a non existing professional group
  */
 public class ScenarioCA6 {
-    private ExceptionBox ctx = new ExceptionBox();
-    private ContractCrudService service = Factories.service.forContractCrudService();
+    private final ExceptionBox ctx = new ExceptionBox();
+    private final ContractCrudService service = Factories.service.forContractCrudService();
 
     @When("[C.A.6] I try to hire a mechanic with non existent professional group")
     public void whenITryToHireAMechanicWithNonExistentProfessionalGroup() {

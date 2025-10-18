@@ -18,8 +18,8 @@ import uo.ri.cws.application.service.util.dtobuilders.ContractDtoBuilder;
  * Scenario: [C.U.4] Try to update a contract terminated
  */
 public class ScenarioCU4 {
-	private ExceptionBox ctx = new ExceptionBox();
-	private ContractCrudService service = Factories.service.forContractCrudService();
+	private final ExceptionBox ctx = new ExceptionBox();
+	private final ContractCrudService service = Factories.service.forContractCrudService();
 	private TContractsRecord contract;
 
 	@Given("[C.U.4] a terminated contract")

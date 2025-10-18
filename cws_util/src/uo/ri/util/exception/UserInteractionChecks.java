@@ -51,7 +51,7 @@ public class UserInteractionChecks {
 
 	public static void isTrue(boolean condition, String msg)
 			throws UserInteractionException {
-		if (condition == false) {
+		if (!condition) {
 			throw new UserInteractionException(msg);
 		}
 	}

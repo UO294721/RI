@@ -22,7 +22,7 @@ import uo.ri.util.exception.BusinessException;
  *   Then [M.FbN.1] I get mechanic
  */
 public class ScenarioMFbN1 {
-    private MechanicCrudService service = Factories.service.forMechanicCrudService();
+    private final MechanicCrudService service = Factories.service.forMechanicCrudService();
     private TMechanicsRecord mechanic;
     private Optional<MechanicDto> result;
 

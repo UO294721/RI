@@ -19,7 +19,7 @@ public interface VehicleCrudService {
 	 */
 	Optional<VehicleDto> findByPlate(String plate) throws BusinessException;
 
-	public static class VehicleDto {
+	class VehicleDto {
 		public String id;
 		public long version;
 

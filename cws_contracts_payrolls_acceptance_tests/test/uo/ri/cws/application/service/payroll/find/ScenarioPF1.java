@@ -20,7 +20,7 @@ import uo.ri.util.exception.BusinessException;
  * Scenario: [P.F.1] Find an existent payroll
  */
 public class ScenarioPF1 {
-	private PayrollService service = Factories.service.forPayrollService();
+	private final PayrollService service = Factories.service.forPayrollService();
 	private TPayrollsRecord payroll;
 	private Optional<PayrollDto> result;
 

@@ -12,8 +12,8 @@ import uo.ri.cws.application.service.util.dbfixture.records.TMechanicsRecord;
 import uo.ri.cws.application.service.util.dtobuilders.MechanicDtoBuilder;
 
 public class ScenarioMU4 {
-	private ExceptionBox ctx = new ExceptionBox();
-	private MechanicCrudService service = Factories.service.forMechanicCrudService();
+	private final ExceptionBox ctx = new ExceptionBox();
+	private final MechanicCrudService service = Factories.service.forMechanicCrudService();
 	private TMechanicsRecord mechanic;
 
 	@Given("[M.U.4] a mechanic")

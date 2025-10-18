@@ -10,8 +10,8 @@ import uo.ri.cws.application.service.util.ExceptionBox;
  * Scenario: [Pg.A.3] Try to add a professional group with null arg
  */
 public class ScenarioPgA3 {
-    private ExceptionBox ctx = new ExceptionBox();
-    private ProfessionalGroupCrudService service = Factories.service.forProfessionalGroupCrudService();
+    private final ExceptionBox ctx = new ExceptionBox();
+    private final ProfessionalGroupCrudService service = Factories.service.forProfessionalGroupCrudService();
 
     @When("[Pg.A.3] I try to add a professional group with null argument")
     public void whenITryToAddAProfessionalGroupWithNullArgument() {

@@ -14,7 +14,7 @@ import uo.ri.cws.application.service.util.dbfixture.records.TMechanicsRecord;
 import uo.ri.util.exception.BusinessException;
 
 public class ScenarioMD1 {
-	private MechanicCrudService service = Factories.service.forMechanicCrudService();
+	private final MechanicCrudService service = Factories.service.forMechanicCrudService();
 	private String mechanicId;
 
 	@Given("[M.D.1] a registered mechanic")

@@ -12,8 +12,8 @@ import uo.ri.cws.application.service.util.dtobuilders.ProfessionalGroupDtoBuilde
  * Scenario: [Pg.A.4] Try to add a professional group with negative triennium
  */
 public class ScenarioPgA4 {
-    private ExceptionBox ctx = new ExceptionBox();
-    private ProfessionalGroupCrudService service = Factories.service.forProfessionalGroupCrudService();
+    private final ExceptionBox ctx = new ExceptionBox();
+    private final ProfessionalGroupCrudService service = Factories.service.forProfessionalGroupCrudService();
 
     @When("[Pg.A.4] I try to add a professional group with negative triennium")
     public void whenITryToAddAProfessionalGroupWithNegativeTriennium() {

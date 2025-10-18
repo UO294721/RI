@@ -1,8 +1,5 @@
 package uo.ri.cws.application.service.payroll.deleteall;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
@@ -17,13 +14,15 @@ import uo.ri.cws.application.service.util.dbfixture.DbFixtures;
 import uo.ri.cws.application.service.util.dbfixture.records.TPayrollsRecord;
 import uo.ri.util.exception.BusinessException;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 /**
  * Feature: Delete all Payrolls previous month
  * Scenario: [P.Da.4] There are payrolls from several months ago including 
  * 		previous month
  */
 public class ScenarioPDa4 {
-    private PayrollService service = Factories.service.forPayrollService();
+    private final PayrollService service = Factories.service.forPayrollService();
 
     private LocalDate previousMonth;
 	private int initialPayrollCount;
@@ -66,7 +65,7 @@ public class ScenarioPDa4 {
         // Verify no payrolls from previous month remain
         boolean hasPreviousMonthPayroll = remainingPayrolls.stream()
             .anyMatch(p -> p.date.equals( Date.valueOf(previousMonth) ));
-        
-        assertTrue(!hasPreviousMonthPayroll, "No previous month payrolls should remain");
+	    
+	    assertFalse(hasPreviousMonthPayroll, "No previous month payrolls should remain");
     }
 }

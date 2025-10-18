@@ -10,8 +10,8 @@ import uo.ri.cws.application.service.util.ExceptionBox;
  * Scenario Outline: [Pg.D.2] Try to del a professional group with empty argument
  */
 public class ScenarioPgD2 {
-    private ExceptionBox ctx = new ExceptionBox();
-    private ProfessionalGroupCrudService service = Factories.service.forProfessionalGroupCrudService();
+    private final ExceptionBox ctx = new ExceptionBox();
+    private final ProfessionalGroupCrudService service = Factories.service.forProfessionalGroupCrudService();
 
     @When("[Pg.D.2] I try to del a professional group with wrong name {string}")
     public void whenITryToDelAProfessionalGroupWithWrongId(String name) {

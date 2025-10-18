@@ -11,8 +11,8 @@ import uo.ri.cws.application.service.util.ExceptionBox;
  * Scenario: [C.F.7] Try to find a contract for a mechanic with null arg
  */
 public class ScenarioCF7 {
-	private ContractCrudService service = Factories.service.forContractCrudService();
-	private ExceptionBox ctx = new ExceptionBox();
+	private final ContractCrudService service = Factories.service.forContractCrudService();
+	private final ExceptionBox ctx = new ExceptionBox();
 
 	@When("[C.F.7] I try to find a contract for a mechanic with null id")
 	public void whenITryToFindAContractForAMechanicWithNullId() {

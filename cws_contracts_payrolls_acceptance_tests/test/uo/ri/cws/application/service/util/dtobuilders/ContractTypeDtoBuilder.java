@@ -5,7 +5,7 @@ import java.util.Random;
 import uo.ri.cws.application.service.contracttype.ContractTypeCrudService.ContractTypeDto;
 
 public class ContractTypeDtoBuilder {
-	private ContractTypeDto dto = createContractTypeDto();
+	private final ContractTypeDto dto = createContractTypeDto();
 
 	public ContractTypeDto build() {
 		return dto;

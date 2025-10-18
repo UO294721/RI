@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 
 public interface InterventionGateway extends Gateway<InterventionRecord> {
 
-    public class InterventionRecord {
+    class InterventionRecord {
         public String id;
         public long version;
 

@@ -16,7 +16,7 @@ import uo.ri.util.exception.BusinessException;
  * Scenario: [C.F.8] Find contracts by mechanic id for a non existent mechanic
  */
 public class ScenarioCF8 {
-	private ContractCrudService service = Factories.service.forContractCrudService();
+	private final ContractCrudService service = Factories.service.forContractCrudService();
 	private List<ContractSummaryDto> result;
 
 	@When("[C.F.8] I search contracts for a non existent mechanic")

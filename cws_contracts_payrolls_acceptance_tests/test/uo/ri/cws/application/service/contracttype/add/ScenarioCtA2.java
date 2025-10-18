@@ -12,8 +12,8 @@ import uo.ri.cws.application.service.util.dbfixture.records.TContractTypesRecord
 import uo.ri.cws.application.service.util.dtobuilders.ContractTypeDtoBuilder;
 
 public class ScenarioCtA2 {
-	private ExceptionBox ctx = new ExceptionBox();
-	private ContractTypeCrudService service = Factories.service.forContractTypeCrudService();
+	private final ExceptionBox ctx = new ExceptionBox();
+	private final ContractTypeCrudService service = Factories.service.forContractTypeCrudService();
 	private String contractTypeName;
 
 	@Given("[Ct.A.2] a registered contract type")

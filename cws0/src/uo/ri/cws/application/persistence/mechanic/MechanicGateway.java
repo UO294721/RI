@@ -8,7 +8,7 @@ import uo.ri.cws.application.persistence.mechanic.MechanicGateway.MechanicRecord
 
 public interface MechanicGateway extends Gateway<MechanicRecord> {
 	
-	public class MechanicRecord{
+	class MechanicRecord{
 		public String id;
 		public long version;
 		
@@ -26,6 +26,6 @@ public interface MechanicGateway extends Gateway<MechanicRecord> {
 	 * @param nif
 	 * @return
 	 */
-	public Optional<MechanicRecord> findByNif(String nif);
+	Optional<MechanicRecord> findByNif(String nif);
 
 }

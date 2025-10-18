@@ -23,7 +23,7 @@ import uo.ri.util.exception.BusinessException;
  * Scenario: [I.C.1] Create one invoice for an existing workorder
  */
 public class ScenarioIC1 {
-	private InvoicingService service = Factories.service.forCreateInvoiceService();
+	private final InvoicingService service = Factories.service.forCreateInvoiceService();
 
 	private TWorkOrdersRecord workOrder;
 	private InvoiceDto expectedValues;

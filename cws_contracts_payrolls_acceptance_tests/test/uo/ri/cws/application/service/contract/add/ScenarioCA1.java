@@ -29,7 +29,7 @@ import uo.ri.util.exception.BusinessException;
  * Scenario: [C.A.1] Hire an existing mechanic with no previous contract in force
  */
 public class ScenarioCA1 {
-	private ContractCrudService service = Factories.service.forContractCrudService();
+	private final ContractCrudService service = Factories.service.forContractCrudService();
     private TMechanicsRecord mechanic;
 	private TContractTypesRecord contractType;
 	private TProfessionalGroupsRecord professionalGroup;

@@ -20,8 +20,8 @@ import uo.ri.util.jdbc.Jdbc;
 
 public class AddMechanic implements Command<MechanicDto> {
 	
-	private MechanicDto dto;
-	private MechanicGateway mg = Factories.persistence.forMechanic();
+	private final MechanicDto dto;
+	private final MechanicGateway mg = Factories.persistence.forMechanic();
 
     public AddMechanic( MechanicDto dto ) {
 		

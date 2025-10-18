@@ -22,7 +22,7 @@ import uo.ri.util.exception.BusinessException;
  * Scenario: [M.A.1] Add a new non existing mechanic
  */
 public class ScenarioMA1 {
-	private MechanicCrudService service = Factories.service.forMechanicCrudService();
+	private final MechanicCrudService service = Factories.service.forMechanicCrudService();
 	private MechanicDto newMechanic;
 	private MechanicDto generated;
 

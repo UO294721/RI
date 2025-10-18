@@ -11,8 +11,8 @@ import uo.ri.cws.application.service.util.ExceptionBox;
  * Scenario: [P.Fs.11] Find payrolls for a non existent professional group
  */
 public class ScenarioPFs11 {
-	private PayrollService service = Factories.service.forPayrollService();
-	private ExceptionBox ctx = new ExceptionBox();
+	private final PayrollService service = Factories.service.forPayrollService();
+	private final ExceptionBox ctx = new ExceptionBox();
 
 	@When("[P.Fs.11] I try to find payrolls with a non existent professional group name")
 	public void whenITryToFindPayrollsWithANonExistentProfessionalGroupName() {

@@ -16,7 +16,7 @@ import uo.ri.util.exception.BusinessException;
  * Scenario: [P.F.2] Find a non existent payroll
  */
 public class ScenarioPF2 {
-	private PayrollService service = Factories.service.forPayrollService();
+	private final PayrollService service = Factories.service.forPayrollService();
 	private Optional<PayrollDto> result;
 
 	@When("[P.F.2] I find a payroll with a non existent id")

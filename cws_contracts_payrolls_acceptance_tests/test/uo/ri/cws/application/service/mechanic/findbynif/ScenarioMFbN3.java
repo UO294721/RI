@@ -12,8 +12,8 @@ import uo.ri.cws.application.service.util.ExceptionBox;
  *   Then [M.FbN.3] argument is rejected with an explaining message
  */
 public class ScenarioMFbN3 {
-    private MechanicCrudService service = Factories.service.forMechanicCrudService();
-    private ExceptionBox ctx = new ExceptionBox();
+    private final MechanicCrudService service = Factories.service.forMechanicCrudService();
+    private final ExceptionBox ctx = new ExceptionBox();
 
     @When("[M.FbN.3] I try to find a mechanic with null nif")
     public void whenITryToFindMechanicWithNullNif() {

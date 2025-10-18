@@ -19,7 +19,7 @@ import uo.ri.util.exception.BusinessException;
  * Scenario: [Pg.F.2] Find an existent professional group
  */
 public class ScenarioPgF2 {
-    private ProfessionalGroupCrudService service = Factories.service.forProfessionalGroupCrudService();
+    private final ProfessionalGroupCrudService service = Factories.service.forProfessionalGroupCrudService();
     private TProfessionalGroupsRecord professionalGroup;
     private Optional<ProfessionalGroupDto> result;
 

@@ -13,7 +13,7 @@ import uo.ri.cws.application.service.professionalgroup.ProfessionalGroupCrudServ
 
 public class ContractDtoBuilder {
 
-	private ContractDto dto = createDefaultDto();
+	private final ContractDto dto = createDefaultDto();
 
 	private ContractDto createDefaultDto() {
 		ContractDto d = new ContractDto();

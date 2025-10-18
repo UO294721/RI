@@ -12,8 +12,8 @@ import uo.ri.cws.application.service.util.ExceptionBox;
  * Scenario: [I.C.8] Trying to create one invoice for an empty argument
  */
 public class ScenarioIC8 {
-    private InvoicingService service = Factories.service.forCreateInvoiceService();
-    private ExceptionBox ctx = new ExceptionBox();
+    private final InvoicingService service = Factories.service.forCreateInvoiceService();
+    private final ExceptionBox ctx = new ExceptionBox();
 
     @When("[I.C.8] I try to create an invoice for an empty list of workorders")
     public void whenITryToCreateInvoiceForEmptyList() {

@@ -113,7 +113,7 @@ public interface InvoicingService {
 	void settleInvoice(String invoiceId, Map<String, Double> charges)
 			throws BusinessException;
 
-	public static class InvoiceDto {
+	class InvoiceDto {
 
 		public String id;		// the surrogate id (UUID)
 		public long version;
@@ -125,7 +125,7 @@ public interface InvoicingService {
 		public String state;	// the state as in InvoiceState
 	}
 
-	public static class InvoicingWorkOrderDto {
+	class InvoicingWorkOrderDto {
 		public String id;
 		public String description;
 		public LocalDateTime date;
@@ -133,7 +133,7 @@ public interface InvoicingService {
 		public double amount;
 	}
 
-	public static abstract class PaymentMeanDto {
+	abstract class PaymentMeanDto {
 		public String id;
 		public long version;
 
@@ -141,16 +141,16 @@ public interface InvoicingService {
 		public double accumulated;
 	}
 
-	public static class CashDto extends PaymentMeanDto {}
+	class CashDto extends PaymentMeanDto {}
 
-	public static class CardDto extends PaymentMeanDto {
+	class CardDto extends PaymentMeanDto {
 		public String cardNumber;
 		public LocalDate cardExpiration;
 		public String cardType;
 
 	}
 
-	public static class VoucherDto extends PaymentMeanDto {
+	class VoucherDto extends PaymentMeanDto {
 		public String code;
 		public String description;
 		public double available;

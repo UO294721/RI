@@ -17,7 +17,7 @@ import uo.ri.cws.application.service.mechanic.MechanicCrudService.MechanicDto;
 import uo.ri.util.exception.BusinessException;
 
 public class ScenarioMFbN2 {
-    private MechanicCrudService service = Factories.service.forMechanicCrudService();
+    private final MechanicCrudService service = Factories.service.forMechanicCrudService();
 	private Optional<MechanicDto> result;    
 
     @When("[M.FbN.2] I try to find a mechanic by a non existent nif")
