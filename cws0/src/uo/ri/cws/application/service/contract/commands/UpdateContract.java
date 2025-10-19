@@ -27,11 +27,6 @@ public class UpdateContract implements Command<Void> {
 		ArgumentChecks.isNotBlank(dto.id, "Contract id cannot be blank");
 		ArgumentChecks.isTrue(dto.annualBaseSalary > 0,
 				"Annual salary cannot be negative");
-		
-		if (dto.endDate != null) {
-			ArgumentChecks.isTrue(dto.endDate.isAfter(dto.startDate),
-					"End date must be after start date");
-		}
 	}
 	
 	@Override
@@ -47,11 +42,14 @@ public class UpdateContract implements Command<Void> {
 					"Contract is not in force");
 			BusinessChecks.hasVersion(dto.version, cr.version);
 			
-			// Update fields
-			BusinessChecks.isTrue(dto.endDate.isAfter(cr.startDate),
-					"End date must be after start date");
-			cr.endDate = dto.endDate;
+			// Validate end date is after start date
+			if (dto.endDate != null) {
+				BusinessChecks.isTrue(dto.endDate.isAfter(cr.startDate),
+						"End date must be after start date");
+			}
 			
+			// Update fields
+			cr.endDate = dto.endDate;
 			cr.annualBaseSalary = dto.annualBaseSalary;
 			
 			cg.update(cr);

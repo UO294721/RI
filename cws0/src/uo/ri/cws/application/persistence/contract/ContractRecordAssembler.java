@@ -13,6 +13,7 @@ public class ContractRecordAssembler {
 		cr.id = rs.getString("id");
 		cr.mechanicId = rs.getString("mechanic_id");
 		cr.contractTypeId = rs.getString("contracttype_id");
+		
 		cr.professionalGroupId = rs.getString("professionalgroup_id");
 		cr.startDate = rs.getDate("startdate").toLocalDate();
 		

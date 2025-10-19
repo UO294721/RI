@@ -2,6 +2,7 @@ package uo.ri.cws.application.persistence.contract;
 
 import uo.ri.cws.application.persistence.Gateway;
 import uo.ri.cws.application.persistence.PersistenceException;
+import uo.ri.cws.application.persistence.contract.ContractGateway.ContractRecord;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -12,7 +13,7 @@ import java.util.Optional;
  * Gateway for Contract persistence operations.
  * Follows the Table Data Gateway pattern.
  */
-public interface ContractGateway extends Gateway<ContractGateway.ContractRecord> {
+public interface ContractGateway extends Gateway<ContractRecord> {
 	
 	/**
 	 * Record representing a Contract in the database

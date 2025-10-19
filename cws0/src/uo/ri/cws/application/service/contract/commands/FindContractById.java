@@ -47,7 +47,9 @@ public class FindContractById implements Command<Optional<ContractDto>> {
 			ContractTypeRecord ctr = ctg.findById(cr.contractTypeId).orElseThrow();
 			ProfessionalGroupRecord pgr = pgg.findById(cr.professionalGroupId).orElseThrow();
 			
-			return Optional.of(ContractDtoAssembler.toDto(cr, mr, ctr, pgr));
+			ContractDto dto = ContractDtoAssembler.toDto(cr, mr, ctr, pgr);
+			
+			return Optional.of(dto);
 			
 		} catch (PersistenceException e) {
 			throw new BusinessException("Error finding contract", e);

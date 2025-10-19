@@ -14,16 +14,15 @@ public class ContractDtoAssembler {
 	/**
 	 * Converts a DTO to a Record for persistence
 	 */
-	public static ContractRecord toRecord(ContractDto dto, String mechanicId,
-	                                      String contractTypeId, String professionalGroupId) {
+	public static ContractRecord toRecord(ContractDto dto) {
 		ContractRecord cr = new ContractRecord();
 		
 		cr.id = dto.id != null ? dto.id : UUID.randomUUID().toString();
 		cr.version = dto.version > 0 ? dto.version : 1L;
 		
-		cr.mechanicId = mechanicId;
-		cr.contractTypeId = contractTypeId;
-		cr.professionalGroupId = professionalGroupId;
+		cr.mechanicId = dto.mechanic.id;
+		cr.contractTypeId = dto.contractType.id;
+		cr.professionalGroupId = dto.professionalGroup.id;
 		
 		cr.startDate = dto.startDate;
 		cr.endDate = dto.endDate;
@@ -56,21 +55,39 @@ public class ContractDtoAssembler {
 		dto.state = cr.state;
 		
 		// Mechanic info
-		dto.mechanic.id = mr.id;
-		dto.mechanic.nif = mr.nif;
-		dto.mechanic.name = mr.name;
-		dto.mechanic.surname = mr.surname;
+		dto.mechanic = toMechanicDto(mr);
 		
 		// Contract type info
-		dto.contractType.id = ctr.id;
-		dto.contractType.name = ctr.name;
-		dto.contractType.compensationDaysPerYear = ctr.compensationDays;
+		dto.contractType = toContractTypeDto(ctr);
 		
 		// Professional group info
-		dto.professionalGroup.id = pgr.id;
-		dto.professionalGroup.name = pgr.name;
-		dto.professionalGroup.trieniumPayment = pgr.trienniumPayment;
-		dto.professionalGroup.productivityRate = pgr.productivityRate;
+		dto.professionalGroup = toProfessionalGroupDto(pgr);
+		
+		return dto;
+	}
+	
+	public static ContractDto toDto(ContractRecord cr, MechanicOfContractDto mr,
+	                                ContractTypeOfContractDto ctr,
+	                                ProfessionalGroupOfContractDto pgr) {
+		ContractDto dto = new ContractDto();
+		
+		dto.id = cr.id;
+		dto.version = cr.version;
+		dto.startDate = cr.startDate;
+		dto.endDate = cr.endDate;
+		dto.annualBaseSalary = cr.annualBaseSalary;
+		dto.taxRate = cr.taxRate;
+		dto.settlement = cr.settlement;
+		dto.state = cr.state;
+		
+		// Mechanic info
+		dto.mechanic = mr;
+		
+		// Contract type info
+		dto.contractType = ctr;
+		
+		// Professional group info
+		dto.professionalGroup = pgr;
 		
 		return dto;
 	}
@@ -88,6 +105,35 @@ public class ContractDtoAssembler {
 		dto.state = cr.state;
 		dto.numPayrolls = numPayrolls;
 		
+		return dto;
+	}
+	
+	public static MechanicOfContractDto toMechanicDto(MechanicRecord mr) {
+		MechanicOfContractDto dto = new MechanicOfContractDto();
+		
+		dto.id = mr.id;
+		dto.nif = mr.nif;
+		dto.name = mr.name;
+		dto.surname = mr.surname;
+		return dto;
+	}
+	
+	public static ContractTypeOfContractDto toContractTypeDto(ContractTypeRecord ctr) {
+		ContractTypeOfContractDto dto = new ContractTypeOfContractDto();
+		
+		dto.id = ctr.id;
+		dto.name = ctr.name;
+		dto.compensationDaysPerYear = ctr.compensationDays;
+		return dto;
+	}
+	
+	public static ProfessionalGroupOfContractDto toProfessionalGroupDto(ProfessionalGroupRecord pgr) {
+		ProfessionalGroupOfContractDto dto = new ProfessionalGroupOfContractDto();
+		
+		dto.id = pgr.id;
+		dto.name = pgr.name;
+		dto.trieniumPayment = pgr.trienniumPayment;
+		dto.productivityRate = pgr.productivityRate;
 		return dto;
 	}
 }

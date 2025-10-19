@@ -10,6 +10,8 @@ import uo.ri.cws.application.persistence.invoice.InvoiceWorkOrderGateway;
 import uo.ri.cws.application.persistence.invoice.impl.InvoiceWorkOrderWorkOrderGatewayImpl;
 import uo.ri.cws.application.persistence.mechanic.MechanicGateway;
 import uo.ri.cws.application.persistence.mechanic.impl.MechanicGatewayImpl;
+import uo.ri.cws.application.persistence.payroll.PayrollGateway;
+import uo.ri.cws.application.persistence.payroll.impl.PayrollGatewayImpl;
 import uo.ri.cws.application.persistence.professionalgroup.ProfessionalGroupGateway;
 import uo.ri.cws.application.persistence.professionalgroup.impl.ProfessionalGroupGatewayImpl;
 import uo.ri.cws.application.persistence.workorder.WorkOrderGateway;
@@ -61,9 +63,9 @@ public class PersistenceFactory {
     public ContractTypeGateway forContractType() {
         return new ContractTypeGatewayImpl();
     }
-//
-//    public PayrollGateway forPayroll() {
-//        return new PayrollGatewayImpl();
-//    }
+
+    public PayrollGateway forPayroll() {
+        return new PayrollGatewayImpl();
+    }
 
 }
