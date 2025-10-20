@@ -32,7 +32,12 @@ public interface InvoiceWorkOrderGateway extends Gateway<InvoiceRecord> {
         public String state;
         public double amount;
     }
-
+	
+	/**
+	 * Finds all work orders that have not been invoiced yet by a client
+	 * @param nif the client's nif
+	 * @return List of work orders, may be empty
+	 */
     List<InvoicingWorkOrderRecord> findNotInvoicedByClientNif(String nif);
 
 }

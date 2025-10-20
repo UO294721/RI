@@ -25,6 +25,7 @@ public interface InterventionGateway extends Gateway<InterventionRecord> {
      * Checks if a mechanic has any interventions
      * @param mechanicId the mechanic id
      * @return true if has interventions, false otherwise
+     * @throws PersistenceException if there is a database error
      */
     boolean hasInterventions(String mechanicId) throws PersistenceException;
 

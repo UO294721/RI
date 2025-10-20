@@ -18,6 +18,11 @@ import java.util.Optional;
  */
 public class ContractGatewayImpl implements ContractGateway {
 	
+	/**
+	 * Adds a new item to the TContracts table
+	 * @param t the record to add to the table
+	 * @throws PersistenceException if there is a database error
+	 */
 	@Override
 	public void add(ContractRecord t) throws PersistenceException {
 		try {
@@ -54,6 +59,11 @@ public class ContractGatewayImpl implements ContractGateway {
 		}
 	}
 	
+	/**
+	 * Deletes a record from the TContracts table
+	 * @param id key to delete
+	 * @throws PersistenceException if there is a database error
+	 */
 	@Override
 	public void remove(String id) throws PersistenceException {
 		try {
@@ -69,6 +79,11 @@ public class ContractGatewayImpl implements ContractGateway {
 		}
 	}
 	
+	/**
+	 * Updates a record in the TContracts table
+	 * @param t the record to update
+	 * @throws PersistenceException if there is a database error
+	 */
 	@Override
 	public void update(ContractRecord t) throws PersistenceException {
 		try {
@@ -96,6 +111,12 @@ public class ContractGatewayImpl implements ContractGateway {
 		}
 	}
 	
+	/**
+	 * Retrieves a record from the TContracts table
+	 * @param id of the contract to retrieve
+	 * @return Optional containing the record if found
+	 * @throws PersistenceException if there is a database error
+	 */
 	@Override
 	public Optional<ContractRecord> findById(String id) throws PersistenceException {
 		try {
@@ -118,6 +139,11 @@ public class ContractGatewayImpl implements ContractGateway {
 		return Optional.empty();
 	}
 	
+	/**
+	 * Retrieves all records from the TContracts table
+	 * @return List containing all records
+	 * @throws PersistenceException if there is a database error
+	 */
 	@Override
 	public List<ContractRecord> findAll() throws PersistenceException {
 		List<ContractRecord> contracts = new ArrayList<>();
@@ -141,6 +167,13 @@ public class ContractGatewayImpl implements ContractGateway {
 		return contracts;
 	}
 	
+	/**
+	 * Retrieves a record from the TContracts table that is in force for a
+	 * given mechanic id
+	 * @param mechanicId the mechanic's ID
+	 * @return Optional containing the record if found
+	 * @throws PersistenceException if there is a database error
+	 */
 	@Override
 	public Optional<ContractRecord> findInforceByMechanicId(String mechanicId)
 			throws PersistenceException {
@@ -164,6 +197,12 @@ public class ContractGatewayImpl implements ContractGateway {
 		return Optional.empty();
 	}
 	
+	/**
+	 * Retrieves all records from the TContracts table for a given mechanic id
+	 * @param mechanicId the mechanic's ID
+	 * @return List containing all records for the given mechanic
+	 * @throws PersistenceException if there is a database error
+	 */
 	@Override
 	public List<ContractRecord> findByMechanicId(String mechanicId)
 			throws PersistenceException {
@@ -189,6 +228,11 @@ public class ContractGatewayImpl implements ContractGateway {
 		return contracts;
 	}
 	
+	/**
+	 * Retrieves all records from the TContracts table that are in force
+	 * @return List containing all records
+	 * @throws PersistenceException if there is a database error
+	 */
 	@Override
 	public List<ContractRecord> findInforceContracts() throws PersistenceException {
 		List<ContractRecord> contracts = new ArrayList<>();
@@ -212,6 +256,13 @@ public class ContractGatewayImpl implements ContractGateway {
 		return contracts;
 	}
 	
+	/**
+	 * Retrieves a record from the TContracts table that is associated with a
+	 * contract type
+	 * @param contractTypeId the contract type ID
+	 * @return Optional containing the record if found
+	 * @throws PersistenceException if there is a database error
+	 */
 	@Override
 	public Optional<ContractRecord> findByContractTypeId(String contractTypeId)
 			throws PersistenceException {
@@ -235,6 +286,12 @@ public class ContractGatewayImpl implements ContractGateway {
 		return Optional.empty();
 	}
 	
+	/**
+	 * Retrieves the number of payrolls for a given contract
+	 * @param contractId the contract ID
+	 * @return number of payrolls for the contract
+	 * @throws PersistenceException if there is a database error
+	 */
 	@Override
 	public int countPayrollsByContractId(String contractId)
 			throws PersistenceException {
@@ -242,7 +299,7 @@ public class ContractGatewayImpl implements ContractGateway {
 			Connection c = Jdbc.getCurrentConnection();
 			
 			try (PreparedStatement pst = c.prepareStatement(
-					"SELECT COUNT(*) FROM TPayrolls WHERE contract_id = ?")) {
+					Queries.getSQLSentence("TCONTRACTS_COUNTPAYROLLS"))) {
 				pst.setString(1, contractId);
 				
 				try (ResultSet rs = pst.executeQuery()) {

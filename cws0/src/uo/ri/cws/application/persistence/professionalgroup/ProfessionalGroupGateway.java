@@ -24,6 +24,9 @@ public interface ProfessionalGroupGateway extends Gateway<ProfessionalGroupRecor
 	
 	/**
 	 * Finds a professional group by name
+	 * @param name the professional group name
+	 * @return Optional containing the professional groupif found
+	 * @throws PersistenceException on database errors
 	 */
 	Optional<ProfessionalGroupRecord> findByName(String name) throws PersistenceException;
 }

@@ -10,6 +10,7 @@
         <module name="cws_util" />
         <module name="cws_contracts_payrolls_acceptance_tests" />
         <module name="cws0" />
+        <module name="cws_acceptance_tests" />
       </profile>
     </annotationProcessing>
   </component>

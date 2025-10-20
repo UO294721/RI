@@ -23,6 +23,9 @@ public interface ContractTypeGateway extends Gateway<ContractTypeRecord> {
 	
 	/**
 	 * Finds a contract type by name
+	 * @param name the contract type name
+	 * @return Optional containing the contract typeif found
+	 * @throws PersistenceException on database errors
 	 */
 	Optional<ContractTypeRecord> findByName(String name) throws PersistenceException;
 }

@@ -25,7 +25,13 @@ public interface WorkOrderGateway extends Gateway<WorkOrderGateway.WorkOrderReco
         public LocalDateTime updatedAt;
         public String entityState;
     }
-
+	
+	/**
+	 * Checks if a mechanic has any active work orders
+	 * @param mechanicId the mechanic id
+	 * @return true if has active work orders, false otherwise
+	 * @throws PersistenceException if there is a database error
+	 */
     boolean hasActiveWorkOrders(String mechanicId) throws PersistenceException;
 
 }
