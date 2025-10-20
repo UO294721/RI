@@ -1,6 +1,7 @@
 package uo.ri.cws.application.persistence.invoice;
 
 import uo.ri.cws.application.persistence.Gateway;
+import uo.ri.cws.application.persistence.PersistenceException;
 import uo.ri.cws.application.persistence.invoice.InvoiceWorkOrderGateway.InvoiceRecord;
 
 import java.time.LocalDate;
@@ -39,5 +40,12 @@ public interface InvoiceWorkOrderGateway extends Gateway<InvoiceRecord> {
 	 * @return List of work orders, may be empty
 	 */
     List<InvoicingWorkOrderRecord> findNotInvoicedByClientNif(String nif);
+	
+	/**
+	 * Finds the maximum invoice number currently in the database
+	 * @return the maximum invoice number, or 0 if no invoices exist
+	 * @throws PersistenceException on database errors
+	 */
+	long findMaxInvoiceNumber() throws PersistenceException;
 
 }

@@ -39,33 +39,25 @@ public class WorkOrderGatewayImpl implements WorkOrderGateway {
             throw new PersistenceException(e);
         }
     }
-
-    @Override
-    public Optional<WorkOrderRecord> findById(String id) throws PersistenceException {
-        Optional<WorkOrderRecord> wo = Optional.empty();
-
-        try{
-            Connection c = Jdbc.getCurrentConnection();
-
-            try(PreparedStatement pst =
-                        c.prepareStatement(Queries.getSQLSentence(
-                                "TWORKORDERS_FINDID"))){
-                pst.setString(1, id);
-                try(ResultSet rs = pst.executeQuery()){
-                    if(rs.next()){
-                        WorkOrderRecord record = WorkOrderRecordAssembler.toRecord(rs);
-                        if(!record.state.equalsIgnoreCase("FINISHED"))
-                            throw new PersistenceException("The workorder is not finished");
-                        wo = Optional.of(record);
-                    }
-                    return wo;
-                }
-            }
-
-        } catch(SQLException e){
-            throw new PersistenceException(e);
-        }
-    }
+	
+	@Override
+	public Optional<WorkOrderRecord> findById(String id) throws PersistenceException {
+		try{
+			Connection c = Jdbc.getCurrentConnection();
+			try(PreparedStatement pst = c.prepareStatement(
+					Queries.getSQLSentence("TWORKORDERS_FINDID"))){
+				pst.setString(1, id);
+				try(ResultSet rs = pst.executeQuery()){
+					if(rs.next()){
+						return Optional.of(WorkOrderRecordAssembler.toRecord(rs));
+					}
+				}
+			}
+		} catch(SQLException e){
+			throw new PersistenceException(e);
+		}
+		return Optional.empty();
+	}
 
     @Override
     public List<WorkOrderRecord> findAll() throws PersistenceException {

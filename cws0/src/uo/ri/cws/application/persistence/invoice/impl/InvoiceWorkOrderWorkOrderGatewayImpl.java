@@ -102,7 +102,23 @@ public class InvoiceWorkOrderWorkOrderGatewayImpl implements InvoiceWorkOrderGat
 
         return notInvoicedWorkOrders;
     }
-
-
+	
+	@Override
+	public long findMaxInvoiceNumber() throws PersistenceException {
+		try {
+			Connection connection = Jdbc.getCurrentConnection();
+			try (PreparedStatement pst = connection.prepareStatement(
+					Queries.getSQLSentence("TINVOICES_FINDNEXTNUMBER"))) {
+				try (ResultSet rs = pst.executeQuery()) {
+					if (rs.next()) {
+						return rs.getLong(1);
+					}
+				}
+			}
+		} catch (SQLException e) {
+			throw new PersistenceException(e);
+		}
+		return 0L;
+	}
 
 }
