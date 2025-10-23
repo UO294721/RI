@@ -2,7 +2,7 @@ package uo.ri.cws.application.service.vehicle.crud;
 
 import uo.ri.cws.application.persistence.util.command.CommandExecutor;
 import uo.ri.cws.application.service.vehicle.VehicleCrudService;
-import uo.ri.cws.application.service.vehicle.crud.commands.FindByPlate;
+import uo.ri.cws.application.service.vehicle.crud.commands.*;
 import uo.ri.util.exception.BusinessException;
 
 import java.util.List;
@@ -20,21 +20,21 @@ public class VehicleCrudServiceImpl implements VehicleCrudService {
 	
 	@Override
 	public VehicleDto create(VehicleDto dto) throws BusinessException {
-		return null;
+		return executor.execute(new AddVehicle(dto));
 	}
 	
 	@Override
 	public void update(VehicleDto dto) throws BusinessException {
-	
+		executor.execute(new UpdateVehicle(dto));
 	}
 	
 	@Override
 	public void delete(String id) throws BusinessException {
-	
+		executor.execute(new DeleteVehicle(id));
 	}
 	
 	@Override
 	public List<VehicleDto> findAll() throws BusinessException {
-		return List.of();
+		return executor.execute(new ListAllVehicles());
 	}
 }

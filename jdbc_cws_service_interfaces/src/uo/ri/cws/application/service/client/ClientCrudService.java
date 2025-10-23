@@ -1,12 +1,23 @@
 package uo.ri.cws.application.service.client;
 
+import java.util.List;
+import java.util.Optional;
+
 /**
  * This service is intended to be used by the Cashier
  * It follows the ISP principle (@see SOLID principles from RC Martin)
  */
 public interface ClientCrudService {
 
-	// ...
+	ClientDto create( ClientDto dto);
+	
+	Optional<ClientDto> findById(String id);
+	
+	void update(ClientDto dto);
+	
+	void delete(String id);
+	
+	List<ClientDto> findAll();
 
 	class ClientDto {
         public String id;

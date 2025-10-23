@@ -7,6 +7,7 @@ import uo.ri.cws.application.persistence.vehicle.VehicleGateway;
 import uo.ri.cws.application.persistence.vehicle.VehicleGateway.VehicleRecord;
 import uo.ri.cws.application.service.vehicle.VehicleCrudService.VehicleDto;
 import uo.ri.cws.application.service.vehicle.crud.VehicleDtoAssembler;
+import uo.ri.util.assertion.ArgumentChecks;
 import uo.ri.util.exception.BusinessException;
 
 import java.util.Optional;
@@ -17,6 +18,8 @@ public class FindByPlate implements Command<Optional<VehicleDto>> {
 	private VehicleGateway vg = Factories.persistence.forVehicle();
 	
 	public FindByPlate(String plate) {
+		ArgumentChecks.isNotNull(plate);
+		ArgumentChecks.isNotBlank(plate);
 		this.plate = plate;
 	}
 	

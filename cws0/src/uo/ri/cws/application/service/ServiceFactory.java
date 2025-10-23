@@ -1,6 +1,6 @@
 package uo.ri.cws.application.service;
 
-import uo.ri.cws.application.service.client.ClientCrudService;
+import uo.ri.cws.application.service.client.ClientCrudServiceImpl;
 import uo.ri.cws.application.service.client.ClientHistoryService;
 import uo.ri.cws.application.service.contract.ContractCrudService;
 import uo.ri.cws.application.service.contract.ContractCrudServiceImpl;
@@ -56,7 +56,7 @@ public class ServiceFactory {
         throw new NotYetImplementedException();
     }
 
-    public ClientCrudService forClientCrudService() {
+    public ClientCrudServiceImpl forClientCrudService() {
         throw new NotYetImplementedException();
     }
 
