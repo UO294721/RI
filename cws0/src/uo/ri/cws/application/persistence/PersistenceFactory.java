@@ -14,6 +14,8 @@ import uo.ri.cws.application.persistence.payroll.PayrollGateway;
 import uo.ri.cws.application.persistence.payroll.impl.PayrollGatewayImpl;
 import uo.ri.cws.application.persistence.professionalgroup.ProfessionalGroupGateway;
 import uo.ri.cws.application.persistence.professionalgroup.impl.ProfessionalGroupGatewayImpl;
+import uo.ri.cws.application.persistence.vehicle.VehicleGateway;
+import uo.ri.cws.application.persistence.vehicle.impl.VehicleGatewayImpl;
 import uo.ri.cws.application.persistence.workorder.WorkOrderGateway;
 import uo.ri.cws.application.persistence.workorder.impl.WorkOrderGatewayImpl;
 
@@ -46,11 +48,11 @@ public class PersistenceFactory {
 //    public SubstitutionGateway forSubstitutionsGateway() {
 //        return new SubstitutionGatewayImpl();
 //    }
-//
-//    public VehicleGateway forVehicle() {
-//        return new VehicleGatewayImpl();
-//    }
-//
+
+    public VehicleGateway forVehicle() {
+        return new VehicleGatewayImpl();
+    }
+
     public ContractGateway forContract() {
         return new ContractGatewayImpl();
     }

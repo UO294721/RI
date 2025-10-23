@@ -1,13 +1,14 @@
 package uo.ri.cws.application.ui.cashier.action;
 
-import java.util.ArrayList;
-import java.util.List;
 import uo.ri.conf.Factories;
 import uo.ri.cws.application.service.invoice.InvoicingService;
 import uo.ri.cws.application.service.invoice.InvoicingService.InvoiceDto;
 import uo.ri.util.console.Console;
 import uo.ri.util.exception.BusinessException;
 import uo.ri.util.menu.Action;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class InvoiceWorkorderAction implements Action {
     
@@ -23,7 +24,6 @@ public class InvoiceWorkorderAction implements Action {
         
         InvoicingService is = Factories.service.forCreateInvoiceService();
         displayInvoice(is.create(workOrderIds));
-        
         
     }
 

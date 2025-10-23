@@ -14,7 +14,6 @@ import uo.ri.cws.application.persistence.util.command.Command;
 import uo.ri.cws.application.service.contract.ContractCrudService.ContractDto;
 import uo.ri.cws.application.service.contract.ContractDtoAssembler;
 import uo.ri.util.assertion.ArgumentChecks;
-import uo.ri.util.exception.BusinessException;
 
 import java.util.Optional;
 
@@ -32,13 +31,12 @@ public class FindContractById implements Command<Optional<ContractDto>> {
 	}
 	
 	@Override
-	public Optional<ContractDto> execute() throws BusinessException {
+	public Optional<ContractDto> execute(){
 		try {
 			Optional<ContractRecord> ocr = cg.findById(id);
 			
-			if (ocr.isEmpty()) {
+			if( ocr.isEmpty())
 				return Optional.empty();
-			}
 			
 			ContractRecord cr = ocr.get();
 			
@@ -52,7 +50,7 @@ public class FindContractById implements Command<Optional<ContractDto>> {
 			return Optional.of(dto);
 			
 		} catch (PersistenceException e) {
-			throw new BusinessException("Error finding contract", e);
 		}
+		return Optional.empty();
 	}
 }

@@ -93,6 +93,9 @@ public class AddContract implements Command<ContractDto> {
 				Optional<ContractTypeRecord> oldCtr = ctg.findById(oldContract.contractTypeId);
 				if (oldCtr.isPresent()) {
 					oldContract.settlement = calculateSettlement(oldContract, oldCtr.get());
+					oldContract.endDate =
+							LocalDate.of(LocalDate.now().getYear(), LocalDate.now().getMonth(),
+									LocalDate.MAX.getDayOfMonth());
 				}
 				cg.update(oldContract);
 			}
@@ -120,8 +123,7 @@ public class AddContract implements Command<ContractDto> {
 	/**
 	 * Calculate settlement for terminated contract
 	 */
-	private double calculateSettlement(ContractRecord cr, ContractTypeRecord ctr)
-			throws BusinessException {
+	private double calculateSettlement(ContractRecord cr, ContractTypeRecord ctr) {
 		
 		// Check if at least 365 days have passed
 		long daysWorked = ChronoUnit.DAYS.between(cr.startDate, LocalDate.now());

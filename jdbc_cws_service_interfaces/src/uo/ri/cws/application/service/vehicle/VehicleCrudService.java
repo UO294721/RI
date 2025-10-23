@@ -1,8 +1,9 @@
 package uo.ri.cws.application.service.vehicle;
 
-import java.util.Optional;
-
 import uo.ri.util.exception.BusinessException;
+
+import java.util.List;
+import java.util.Optional;
 
 /**
  * This service is intended to be used by the Foreman
@@ -18,6 +19,14 @@ public interface VehicleCrudService {
 	 * @throws IllegalArgumentException if the plate is null
 	 */
 	Optional<VehicleDto> findByPlate(String plate) throws BusinessException;
+	
+	VehicleDto create(VehicleDto dto) throws BusinessException;
+	
+	void update(VehicleDto dto) throws BusinessException;
+	
+	void delete(String id) throws BusinessException;
+	
+	List<VehicleDto> findAll() throws BusinessException;
 
 	class VehicleDto {
 		public String id;

@@ -1,7 +1,6 @@
 package uo.ri.cws.application.service.invoice.commands;
 
 import uo.ri.conf.Factories;
-import uo.ri.cws.application.persistence.PersistenceException;
 import uo.ri.cws.application.persistence.invoice.InvoiceRecordAssembler;
 import uo.ri.cws.application.persistence.invoice.InvoiceWorkOrderGateway;
 import uo.ri.cws.application.persistence.invoice.InvoiceWorkOrderGateway.InvoiceRecord;
@@ -44,59 +43,55 @@ public class AddInvoice implements Command<InvoiceDto> {
     }
 
     public InvoiceDto execute() throws BusinessException {
-        try {
-            // 1. Validate all work orders exist and are FINISHED
-            List<WorkOrderRecord> workOrders = new ArrayList<>();
-            double totalAmount = 0.0;
+        // 1. Validate all work orders exist and are FINISHED
+        List<WorkOrderRecord> workOrders = new ArrayList<>();
+        double totalAmount = 0.0;
 
-            for(String id : workOrderIds) {
-                Optional<WorkOrderRecord> wo = wg.findById(id);
-                BusinessChecks.exists(wo, "The WorkOrder does not exist");
+        for(String id : workOrderIds) {
+            Optional<WorkOrderRecord> wo = wg.findById(id);
+            BusinessChecks.exists(wo, "The WorkOrder does not exist");
 
-                WorkOrderRecord record = wo.get();
-	            
-	            if(!"FINISHED".equalsIgnoreCase(record.state)) {
-		            throw new BusinessException("WorkOrder " + id + " is not in FINISHED state");
-	            }
-				
-                totalAmount += record.amount;
-                workOrders.add(record);
+            WorkOrderRecord record = wo.get();
+            
+            if(!"FINISHED".equalsIgnoreCase(record.state)) {
+	            throw new BusinessException("WorkOrder " + id + " is not in FINISHED state");
             }
-
-            // 2. Calculate invoice totals
-            dto.date = LocalDate.now();
-            double vatRate = vatPercentage(dto.date);
-
-            // Amount WITHOUT VAT
-            double amountWithoutVat = totalAmount;
-            // VAT amount
-            dto.vat = Rounds.toCents(amountWithoutVat * (vatRate / 100.0));
-            // Total amount WITH VAT
-            dto.amount = Rounds.toCents(amountWithoutVat + dto.vat);
 			
-			long maxNumber = ig.findMaxInvoiceNumber();
-			dto.number = maxNumber + 1;
-			
-            // 3. Convert DTO to Record and persist
-            InvoiceRecord ir = InvoiceRecordAssembler.toRecord(dto);
-            ig.add(ir);
-
-            // Update DTO with generated number
-            dto.number = ir.number;
-
-            // 4. Update all work orders with invoice reference
-            for(WorkOrderRecord r : workOrders) {
-                r.invoiceId = dto.id;
-                r.state = "INVOICED";
-                r.updatedAt = LocalDateTime.now();
-                wg.update(r);
-            }
-
-            return dto;
-
-        } catch (PersistenceException e) {
-            throw new BusinessException(e);
+            totalAmount += record.amount;
+            workOrders.add(record);
         }
+
+        // 2. Calculate invoice totals
+        dto.date = LocalDate.now();
+        double vatRate = vatPercentage(dto.date);
+
+        // Amount WITHOUT VAT
+        double amountWithoutVat = totalAmount;
+        // VAT amount
+        dto.vat = Rounds.toCents(amountWithoutVat * (vatRate / 100.0));
+        // Total amount WITH VAT
+        dto.amount = Rounds.toCents(amountWithoutVat + dto.vat);
+		
+		long maxNumber = ig.findMaxInvoiceNumber();
+		dto.number = maxNumber + 1;
+		
+        // 3. Convert DTO to Record and persist
+        InvoiceRecord ir = InvoiceRecordAssembler.toRecord(dto);
+        ig.add(ir);
+
+        // Update DTO with generated number
+        dto.number = ir.number;
+
+        // 4. Update all work orders with invoice reference
+        for(WorkOrderRecord r : workOrders) {
+            r.invoiceId = dto.id;
+            r.state = "INVOICED";
+            r.updatedAt = LocalDateTime.now();
+            wg.update(r);
+        }
+
+        return dto;
+			
     }
 
     private double vatPercentage(LocalDate d) {
