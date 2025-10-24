@@ -22,7 +22,7 @@ public class AddMechanicAction implements Action {
         mcs.create(dto);
         
         // Print result
-        Console.println("Mechanic added: " + dto.id);
+        Console.println("Mechanic added successfully");
     }
 
 }

@@ -12,14 +12,14 @@ public class VehicleRecordAssembler {
 		VehicleRecord vr = new VehicleRecord();
 		vr.id = rs.getString("id");
 		vr.clientId = rs.getString("client_id");
-		vr.plate = rs.getString("plate");
+		vr.plate = rs.getString("platenumber");
 		vr.make = rs.getString("make");
 		vr.model = rs.getString("model");
 		vr.vehicleTypeId = rs.getString("vehicletype_id");
 		vr.version = rs.getLong("version");
-		vr.createdAt = rs.getTimestamp(8).toLocalDateTime();
-		vr.updatedAt = rs.getTimestamp(9).toLocalDateTime();
-		vr.entityState = rs.getString(10);
+		vr.createdAt = rs.getTimestamp("createdAt").toLocalDateTime();
+		vr.updatedAt = rs.getTimestamp("updatedAt").toLocalDateTime();
+		vr.entityState = rs.getString("entitystate");
 		return vr;
 	}
 	

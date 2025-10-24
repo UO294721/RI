@@ -1,5 +1,7 @@
 package uo.ri.cws.application.service.client;
 
+import uo.ri.util.exception.BusinessException;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -9,15 +11,17 @@ import java.util.Optional;
  */
 public interface ClientCrudService {
 
-	ClientDto create( ClientDto dto);
+	ClientDto create( ClientDto dto) throws BusinessException;
 	
-	Optional<ClientDto> findById(String id);
+	Optional<ClientDto> findById(String id) throws BusinessException;
 	
-	void update(ClientDto dto);
+	Optional<ClientDto> findByNif(String nif) throws BusinessException;
 	
-	void delete(String id);
+	void update(ClientDto dto) throws BusinessException;
 	
-	List<ClientDto> findAll();
+	void delete(String id) throws BusinessException;
+	
+	List<ClientDto> findAll() throws BusinessException;
 
 	class ClientDto {
         public String id;

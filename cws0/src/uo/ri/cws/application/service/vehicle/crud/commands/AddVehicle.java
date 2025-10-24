@@ -9,6 +9,8 @@ import uo.ri.cws.application.service.vehicle.VehicleCrudService.VehicleDto;
 import uo.ri.util.assertion.ArgumentChecks;
 import uo.ri.util.exception.BusinessException;
 
+import java.util.UUID;
+
 public class AddVehicle implements Command<VehicleDto> {
 	
 	private final VehicleGateway vg = Factories.persistence.forVehicle();
@@ -16,12 +18,13 @@ public class AddVehicle implements Command<VehicleDto> {
 	
 	public AddVehicle( VehicleDto dto ) {
 		ArgumentChecks.isNotNull(dto, "Vehicle dto cannot be null");
-		ArgumentChecks.isNotEmpty(dto.id);
 		ArgumentChecks.isNotEmpty(dto.vehicleTypeId);
 		ArgumentChecks.isNotEmpty(dto.plate);
 		ArgumentChecks.isNotEmpty(dto.make);
 		ArgumentChecks.isNotEmpty(dto.model);
 		ArgumentChecks.isNotNull(dto.clientId);
+		dto.id = UUID.randomUUID().toString();
+		dto.version = 1L;
 		this.dto = dto;
 	}
 	

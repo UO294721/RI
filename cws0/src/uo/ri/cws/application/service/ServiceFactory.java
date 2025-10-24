@@ -14,6 +14,7 @@ import uo.ri.cws.application.service.payroll.PayrollService;
 import uo.ri.cws.application.service.professionalgroup.ProfessionalGroupCrudService;
 import uo.ri.cws.application.service.spare.SparePartCrudService;
 import uo.ri.cws.application.service.vehicle.VehicleCrudService;
+import uo.ri.cws.application.service.vehicle.crud.VehicleCrudServiceImpl;
 import uo.ri.cws.application.service.vehicletype.VehicleTypeCrudService;
 import uo.ri.cws.application.service.workorder.CloseWorkOrderService;
 import uo.ri.cws.application.service.workorder.ViewAssignedWorkOrdersService;
@@ -33,7 +34,7 @@ public class ServiceFactory {
     }
 
     public VehicleCrudService forVehicleCrudService() {
-        throw new NotYetImplementedException();
+        return new VehicleCrudServiceImpl();
     }
 
     public SparePartCrudService forSparePartCrudService() {
@@ -57,7 +58,7 @@ public class ServiceFactory {
     }
 
     public ClientCrudServiceImpl forClientCrudService() {
-        throw new NotYetImplementedException();
+        return new ClientCrudServiceImpl();
     }
 
     public CloseWorkOrderService forClosingWorkOrder() {

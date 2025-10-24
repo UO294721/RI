@@ -11,7 +11,7 @@ public class DeleteMechanicAction implements Action {
     @Override
     public void execute() throws BusinessException {
     	
-    	String nif = Console.readString("nif");
+    	String nif = Console.readString("Mechanic id");
 
     	MechanicCrudService mcs = Factories.service.forMechanicCrudService();
         mcs.delete(nif);

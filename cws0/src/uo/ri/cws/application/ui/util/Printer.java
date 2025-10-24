@@ -1,7 +1,6 @@
 package uo.ri.cws.application.ui.util;
 
-import java.util.List;
-
+import uo.ri.cws.application.service.client.ClientCrudService.ClientDto;
 import uo.ri.cws.application.service.contract.ContractCrudService.ContractDto;
 import uo.ri.cws.application.service.contract.ContractCrudService.ContractSummaryDto;
 import uo.ri.cws.application.service.contracttype.ContractTypeCrudService.ContractTypeDto;
@@ -12,9 +11,12 @@ import uo.ri.cws.application.service.payroll.PayrollService.PayrollDto;
 import uo.ri.cws.application.service.payroll.PayrollService.PayrollSummaryDto;
 import uo.ri.cws.application.service.professionalgroup.ProfessionalGroupCrudService.ProfessionalGroupDto;
 import uo.ri.cws.application.service.spare.SparePartCrudService.SparePartDto;
+import uo.ri.cws.application.service.vehicle.VehicleCrudService.VehicleDto;
 import uo.ri.cws.application.service.vehicletype.VehicleTypeCrudService.VehicleTypeDto;
 import uo.ri.cws.application.service.workorder.WorkOrderCrudService.WorkOrderDto;
 import uo.ri.util.console.Console;
+
+import java.util.List;
 
 public class Printer {
 
@@ -174,5 +176,27 @@ public class Printer {
                 c.endDate != null ? c.endDate : "---",
                 c.state);
     }
-
+	
+	public static void printClient(ClientDto client) {
+		Console.printf("Client name: %s %s\n", client.name, client.surname);
+		Console.printf("\tClient ID: %s\n", client.id);
+		Console.printf("\tClient NIF: %s\n", client.nif);
+		Console.printf("\tClient address: " +
+				               "\n\t\tCity: %s" +
+				               "\n\t\tStreet: %s" +
+				               "\n\t\tZipCode: %s\n", client.addressStreet,
+				client.addressCity, client.addressZipcode);
+		Console.printf("\tClient phone: %s\n", client.phone);
+		Console.printf("\tClient email: %s\n\n", client.email);
+	}
+	
+	public static void printVehicle(VehicleDto vehicle) {
+		Console.printf("Vehicle ID: %s\n", vehicle.id);
+		Console.printf("Vehicle make and model: %s\n",
+				vehicle.make + " " + vehicle.model);
+		Console.printf("Vehicle plate: %s\n", vehicle.plate);
+		Console.printf("Vehicle's client: %s\n", vehicle.clientId);
+		Console.printf("Vehicle type: %s\n\n", vehicle.vehicleTypeId);
+	}
+	
 }
